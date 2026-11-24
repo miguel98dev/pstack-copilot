@@ -3,8 +3,6 @@ name: ci
 on:
   push:
   pull_request:
-  schedule:
-    - cron: "0 6 * * *"
 
 jobs:
   verify:
@@ -23,14 +21,3 @@ jobs:
         run: ./pstack-manager/bin/pstack validate
       - name: Manager and invariant tests
         run: npm test
-
-  upstream-drift:
-    if: github.event_name == 'schedule'
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: "22"
-      - name: Report what a sync from cursor/plugins main would change
-        run: ./pstack-manager/bin/pstack upstream check

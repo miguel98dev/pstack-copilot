@@ -1,0 +1,35 @@
+name: upstream-rollback
+
+# Opens a pull request that reverts the newest upstream sync, restoring pstack-core, the lock, the mapping files,
+# and the history together. A revert that collides with later Copilot changes stops and lists the files.
+# It never merges.
+on:
+  workflow_dispatch:
+    inputs:
+      to:
+        description: "History id, upstream commit, or version of the sync to roll back. Empty: the newest sync"
+        default: ""
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  rollback:
+    runs-on: ubuntu-latest
+    env:
+      GH_TOKEN: ${{ secrets.PSTACK_SYNC_TOKEN || github.token }}
+      TO: ${{ inputs.to }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.PSTACK_SYNC_TOKEN || github.token }}
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Revert and open the pull request
+        run: |
+          ./pstack-manager/bin/pstack upstream rollback --pr --trigger manual \
+            --author-name "github-actions[bot]" --author-email "41898282+github-actions[bot]@users.noreply.github.com" \
+            ${TO:+--to "$TO"}

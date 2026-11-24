@@ -1,0 +1,85 @@
+name: upstream-sync
+
+# Checks cursor/plugins every day, and on demand. When pstack changed it opens a pull request with the exact
+# upstream copy, the prepared Copilot migration, and a report. It never merges: a person reviews every change.
+on:
+  schedule:
+    - cron: "17 5 * * *"
+  workflow_dispatch:
+    inputs:
+      ref:
+        description: "Upstream branch, tag, or commit to sync"
+        default: main
+      dry_run:
+        description: "Analyze and report only. Opens nothing"
+        type: boolean
+        default: false
+      include_rolled_back:
+        description: "Propose an upstream commit again after a reviewer rolled it back"
+        type: boolean
+        default: false
+      allow_downgrade:
+        description: "Accept an upstream version lower than the locked one"
+        type: boolean
+        default: false
+
+# GitHub Actions needs "Allow GitHub Actions to create and approve pull requests" in the repository settings.
+# Pull requests opened with the default token do not start other workflows. Add a PSTACK_SYNC_TOKEN secret
+# (a fine-grained token with contents, pull requests, and issues write access) so ci.yml runs on them.
+permissions:
+  contents: write
+  pull-requests: write
+  issues: write
+
+concurrency:
+  group: upstream-sync
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    env:
+      GH_TOKEN: ${{ secrets.PSTACK_SYNC_TOKEN || github.token }}
+      REF: ${{ inputs.ref || 'main' }}
+      TRIGGER: ${{ github.event_name == 'schedule' && 'schedule' || 'manual' }}
+      RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.PSTACK_SYNC_TOKEN || github.token }}
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - uses: oven-sh/setup-bun@v2
+
+      - name: Check upstream
+        id: check
+        run: |
+          set +e
+          ./pstack-manager/bin/pstack upstream check --ref "$REF" --exit-code --trigger "$TRIGGER" \
+            ${{ inputs.include_rolled_back && '--include-rolled-back' || '' }} \
+            ${{ inputs.allow_downgrade && '--allow-downgrade' || '' }} \
+            --report-out "$RUNNER_TEMP/check.md"
+          echo "code=$?" >> "$GITHUB_OUTPUT"
+          [ -f "$RUNNER_TEMP/check.md" ] && cat "$RUNNER_TEMP/check.md" >> "$GITHUB_STEP_SUMMARY"
+          exit 0
+
+      - name: Open a pull request, or an issue when a conflict stops the sync
+        if: steps.check.outputs.code != '0' && inputs.dry_run != true
+        run: |
+          ./pstack-manager/bin/pstack upstream run --ref "$REF" --trigger "$TRIGGER" --scripts \
+            --author-name "github-actions[bot]" --author-email "41898282+github-actions[bot]@users.noreply.github.com" \
+            --run-url "$RUN_URL" --report-out "$RUNNER_TEMP/sync.md" \
+            ${{ inputs.include_rolled_back && '--include-rolled-back' || '' }} \
+            ${{ inputs.allow_downgrade && '--allow-downgrade' || '' }}
+          [ -f "$RUNNER_TEMP/sync.md" ] && cat "$RUNNER_TEMP/sync.md" >> "$GITHUB_STEP_SUMMARY"
+          exit 0
+
+      - name: Upload the report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: upstream-sync-report
+          path: ${{ runner.temp }}/*.md
+          if-no-files-found: ignore
