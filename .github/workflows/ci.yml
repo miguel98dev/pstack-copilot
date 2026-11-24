@@ -1,0 +1,36 @@
+name: ci
+
+on:
+  push:
+  pull_request:
+  schedule:
+    - cron: "0 6 * * *"
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - uses: oven-sh/setup-bun@v2
+      - name: Core is byte-identical to the locked upstream commit
+        run: ./pstack-manager/bin/pstack core verify
+      - name: Build the Copilot adaptation
+        run: ./pstack-manager/bin/pstack build
+      - name: Prove the build and run upstream's script tests on it
+        run: ./pstack-manager/bin/pstack validate
+      - name: Manager and invariant tests
+        run: npm test
+
+  upstream-drift:
+    if: github.event_name == 'schedule'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Report what a sync from cursor/plugins main would change
+        run: ./pstack-manager/bin/pstack upstream check
