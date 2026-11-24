@@ -1,0 +1,2 @@
+# pstack-core must stay byte-identical to upstream on every OS.
+pstack-core/upstream/** -text
