@@ -427,6 +427,13 @@
 			"validation": "static"
 		},
 		{
+			"id": "skill:reframe",
+			"kind": "skill",
+			"status": "pending",
+			"copilot": "New in upstream 0.15.48. Not reviewed for Copilot yet.",
+			"validation": "untested"
+		},
+		{
 			"id": "playbook:investigation",
 			"kind": "playbook",
 			"status": "native",
@@ -588,13 +595,6 @@
 			"limits": "/deslop not shipped."
 		},
 		{
-			"id": "playbook:orchestrate",
-			"kind": "playbook",
-			"status": "pending",
-			"copilot": "New in upstream 0.15.36. Not reviewed for Copilot yet.",
-			"validation": "untested"
-		},
-		{
 			"id": "agent:poteto-agent",
 			"kind": "agent",
 			"status": "adapted",
@@ -642,13 +642,6 @@
 			"copilot": "Unchanged.",
 			"validation": "untested",
 			"limits": "Needs mise, Java, and network to install TLC."
-		},
-		{
-			"id": "script:skills/poteto-mode/scripts/check-plan.mjs",
-			"kind": "script",
-			"status": "pending",
-			"copilot": "New in upstream 0.15.36. Not reviewed for Copilot yet.",
-			"validation": "untested"
 		},
 		{
 			"id": "term:`Task`",

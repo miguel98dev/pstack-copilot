@@ -98,6 +98,53 @@
 				"failed": []
 			},
 			"report": "docs/sync/reports/2026-11-24-0.15.36-c742dd61706f.md"
+		},
+		{
+			"id": "sync-ca782ed8b3c2-2",
+			"kind": "sync",
+			"at": "2026-11-24T17:11:42.134Z",
+			"trigger": "manual",
+			"status": "prepared",
+			"from": {
+				"commit": "c742dd61706fbacc1b95f1a20b7b988cf096ce6c",
+				"version": "0.15.36",
+				"tree": "4719e1c4b4c43bac85d4206a8b41dd2899769c1c"
+			},
+			"to": {
+				"commit": "ca782ed8b3c2c521cead8e1720d55c3a5dbf2347",
+				"version": "0.15.48",
+				"tree": "971573532de6714a4ddff8ec39b52d021ebf161a"
+			},
+			"counts": {
+				"added": 5,
+				"modified": 84,
+				"deleted": 24,
+				"renamed": 0,
+				"mode-changed": 0
+			},
+			"adapter": {
+				"revisionBefore": 5,
+				"revisionAfter": 6,
+				"coreVersionsAfter": [
+					"0.15.48"
+				]
+			},
+			"impact": {
+				"affected": 47,
+				"needsManual": 3
+			},
+			"conflicts": [],
+			"migration": [
+				"features.json: removed playbook:orchestrate (upstream playbook deleted)",
+				"features.json: removed script:skills/poteto-mode/scripts/check-plan.mjs (upstream script deleted)",
+				"features.json: added skill:reframe as pending (new upstream skill)",
+				"adapter.json: coreVersions is now 0.15.48, revision 5 -> 6"
+			],
+			"validation": {
+				"passed": true,
+				"failed": []
+			},
+			"report": "docs/sync/reports/2026-11-24-0.15.48-ca782ed8b3c2.md"
 		}
 	]
 }
