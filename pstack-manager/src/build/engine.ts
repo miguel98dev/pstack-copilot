@@ -1,7 +1,7 @@
 import { join } from "node:path";
 import { readFileSync } from "node:fs";
 import { type FrontValue, parseFrontmatter, serializeEntry } from "../lib/frontmatter.ts";
-import { exists, fileMode, readJson, remove, sha256, walkFiles, writeFile, writeJson } from "../lib/fs.ts";
+import { compare, exists, fileMode, readJson, remove, sha256, walkFiles, writeFile, writeJson } from "../lib/fs.ts";
 import { injectAfterH1, type Injection, isRelativeHref, type LinkRewrite, relativeHref, resolveRelative, rewriteLinks, splitHref } from "../lib/markdown.ts";
 import type { UpstreamLock } from "../upstream/lock.ts";
 import { type Adapter, adapterVersion } from "./adapter.ts";
@@ -255,7 +255,7 @@ export function buildDist(input: BuildInput): BuildResult {
 		version,
 		core: { version: lock.version, commit: lock.commit, tree: lock.tree },
 		install: adapter.install,
-		files: [...entries].sort((a, b) => a.path.localeCompare(b.path)),
+		files: [...entries].sort((a, b) => compare(a.path, b.path)),
 	};
 	writeJson(join(outDir, MANIFEST_FILE), manifest);
 	return { version, outDir, manifest };

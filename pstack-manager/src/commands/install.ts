@@ -6,8 +6,8 @@ import type { Paths } from "../paths.ts";
 import { activate, currentLink, deactivate, installedVersions, storeVersion } from "../install/user.ts";
 import { readState } from "../install/state.ts";
 import { installWorkspace, uninstallWorkspace } from "../install/workspace.ts";
-import { syncUpstream } from "../upstream/sync.ts";
-import { makeGate } from "../validate/gate.ts";
+import { failedChecks } from "../upstream/analysis.ts";
+import { runSync } from "../upstream/pipeline.ts";
 import { problemsOf, validateAll } from "../validate/index.ts";
 
 /** Builds the current project and refuses to go further unless every check passes. */
@@ -82,13 +82,14 @@ export function update(args: string[]): number {
 	});
 	const p = paths();
 	const adapterId = values.adapter || "copilot";
-	const sync = syncUpstream(p, { source: values.source, ref: values.ref, repository: values.repository, gate: makeGate(p, adapterId) });
-	if (sync.status === "blocked") {
-		warn(`upstream ${sync.lock.version} (${sync.lock.commit.slice(0, 12)}) needs adapter work before it can install. Your installed version is unchanged.`);
-		for (const problem of sync.problems) warn(`  - ${problem}`);
+	const sync = runSync(p, { source: values.source, ref: values.ref, repository: values.repository, adapterId, trigger: "local" });
+	if (sync.status === "conflict" || sync.status === "blocked") {
+		warn(`upstream ${sync.analysis.lock.version} (${sync.analysis.lock.commit.slice(0, 12)}) cannot be installed yet. Your installed version is unchanged.`);
+		for (const conflict of sync.analysis.conflicts.filter((c) => c.severity === "blocking")) warn(`  - ${conflict.kind}: ${conflict.message}`);
+		for (const check of failedChecks(sync.analysis)) warn(`  - failing check: ${check}`);
 		return 1;
 	}
-	print(`upstream: ${sync.status} (${sync.lock.version} at ${sync.lock.commit.slice(0, 12)})`);
+	print(`upstream: ${sync.status} (${sync.analysis.lock.version} at ${sync.analysis.lock.commit.slice(0, 12)})`);
 	const before = readState(p).active;
 	const distDir = buildValidated(p, adapterId, !values["skip-scripts"]);
 	const stored = storeVersion(p, distDir, Boolean(values.force));

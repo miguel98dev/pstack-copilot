@@ -36,6 +36,11 @@ export function walkFiles(root: string): string[] {
 	return out.sort();
 }
 
+/** Orders strings by code unit, so output is the same on every machine whatever its locale. */
+export function compare(a: string, b: string): number {
+	return a < b ? -1 : a > b ? 1 : 0;
+}
+
 export function sha256(bytes: Buffer | string): string {
 	return createHash("sha256").update(bytes).digest("hex");
 }

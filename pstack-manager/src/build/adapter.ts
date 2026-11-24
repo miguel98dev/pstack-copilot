@@ -21,8 +21,10 @@ export interface ModelRules {
 	readonly panelRoles: readonly string[];
 }
 
-export type SupportStatus = "native" | "adapted" | "partial" | "unsupported" | "excluded";
-export type ValidationState = "vscode-validated" | "static" | "untested";
+/** `pending` marks an upstream item the sync found and nobody has reviewed for Copilot yet. */
+export type SupportStatus = "native" | "adapted" | "partial" | "unsupported" | "excluded" | "pending";
+/** `stale` marks a feature that was validated in VS Code before upstream changed it, so the run no longer proves it. */
+export type ValidationState = "vscode-validated" | "stale" | "static" | "untested";
 
 export interface Feature {
 	readonly id: string;
@@ -32,6 +34,14 @@ export interface Feature {
 	readonly validation: ValidationState;
 	readonly evidence?: string;
 	readonly limits?: string;
+}
+
+export interface Watch {
+	/** Upstream paths: an exact path, or a folder ending in `/**`. */
+	readonly upstream: readonly string[];
+	/** The adapter files or feature ids that depend on them. */
+	readonly adaptation: readonly string[];
+	readonly why: string;
 }
 
 export interface Adapter {
@@ -54,6 +64,7 @@ export interface Adapter {
 	readonly features: readonly Feature[];
 	readonly overlays: string;
 	readonly matrix: string;
+	readonly watch: readonly Watch[];
 	readonly install: { readonly skills: string; readonly agents: string; readonly instructions: string };
 }
 
@@ -84,8 +95,8 @@ function relocations(value: unknown, file: string, name: string): Relocation[] {
 	});
 }
 
-const STATUSES = new Set(["native", "adapted", "partial", "unsupported", "excluded"]);
-const VALIDATIONS = new Set(["vscode-validated", "static", "untested"]);
+const STATUSES = new Set(["native", "adapted", "partial", "unsupported", "excluded", "pending"]);
+const VALIDATIONS = new Set(["vscode-validated", "stale", "static", "untested"]);
 const KINDS = new Set(["skill", "playbook", "agent", "script", "term", "automation", "copilot-addition"]);
 
 function parseFeatures(value: unknown, file: string): Feature[] {
@@ -103,7 +114,7 @@ function parseFeatures(value: unknown, file: string): Feature[] {
 		if (!KINDS.has(kind)) fail(file, `${id}.kind ${kind}`);
 		if (!STATUSES.has(status)) fail(file, `${id}.status ${status}`);
 		if (!VALIDATIONS.has(validation)) fail(file, `${id}.validation ${validation}`);
-		if (validation === "vscode-validated" && typeof o.evidence !== "string") fail(file, `${id} is vscode-validated without evidence`);
+		if ((validation === "vscode-validated" || validation === "stale") && typeof o.evidence !== "string") fail(file, `${id} is ${validation} without evidence`);
 		return {
 			id,
 			kind: kind as Feature["kind"],
@@ -113,6 +124,15 @@ function parseFeatures(value: unknown, file: string): Feature[] {
 			evidence: typeof o.evidence === "string" ? o.evidence : undefined,
 			limits: typeof o.limits === "string" ? o.limits : undefined,
 		};
+	});
+}
+
+function parseWatch(value: unknown, file: string): Watch[] {
+	if (value === undefined) return [];
+	if (!Array.isArray(value)) fail(file, "watch must be an array");
+	return value.map((item, index) => {
+		const o = obj(item, file, `watch[${index}]`);
+		return { upstream: strings(o.upstream, file, `watch[${index}].upstream`), adaptation: strings(o.adaptation, file, `watch[${index}].adaptation`), why: str(o.why, file, `watch[${index}].why`) };
 	});
 }
 
@@ -189,6 +209,7 @@ export function loadAdapter(dir: string): Adapter {
 		models,
 		features: parseFeatures(readJson(featuresFile), featuresFile),
 		overlays: join(dir, str(a.overlays, file, "overlays")),
+		watch: parseWatch(a.watch, file),
 		matrix: str(a.matrix, file, "matrix"),
 		install: { skills: str(install.skills, file, "install.skills"), agents: str(install.agents, file, "install.agents"), instructions: str(install.instructions, file, "install.instructions") },
 	};

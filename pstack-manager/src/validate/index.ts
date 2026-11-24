@@ -103,7 +103,7 @@ export function validateAll(input: ValidateInput): CheckResult[] {
 		run("adapter maps every Cursor term in use", () => checkAdapterCoverage(coreDir, distDir, adapter, lock)),
 		run("every upstream feature is traced", () => checkFeatureCoverage(adapter, lock)),
 		run("skills, agents, instructions follow Copilot schemas", () => checkSchemas(distDir, adapter)),
-		run("relative links resolve inside the build", () => checkLinks(distDir)),
+		run("relative links resolve inside the build", () => checkLinks(distDir, coreDir)),
 		run("model defaults agree with the adapter skill", () => checkModels(distDir, adapter)),
 	];
 	return input.scripts ? [...results, ...runScriptTests(distDir)] : results;

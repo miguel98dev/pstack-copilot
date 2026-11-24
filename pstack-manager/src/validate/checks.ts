@@ -176,7 +176,7 @@ export function checkFeatureCoverage(adapter: Adapter, lock: UpstreamLock): stri
 }
 
 /** The Agent Skills rules Copilot applies, which make a skill silently fail to load when broken. */
-export function lintSkillFolder(dir: string): string[] {
+export function lintSkillFolder(dir: string, options: { links: boolean } = { links: true }): string[] {
 	const file = join(dir, "SKILL.md");
 	const label = posix.join(basename(dirname(dir)), basename(dir));
 	if (!exists(file)) return [`${label}: no SKILL.md`];
@@ -204,7 +204,7 @@ export function lintSkillFolder(dir: string): string[] {
 	for (const path of walkFiles(dir)) {
 		const abs = join(dir, path);
 		if (isDirectScript(path) && readFileSync(abs).subarray(0, 2).toString() === "#!" && !isExecutable(abs) && !path.includes("/test/")) problems.push(`${label}: ${path} has a shebang but is not executable`);
-		if (!path.endsWith(".md")) continue;
+		if (!options.links || !path.endsWith(".md") || path.startsWith("upstream/")) continue;
 		for (const match of readText(abs).matchAll(LINK)) {
 			if (!isRelativeHref(match[1])) continue;
 			const target = join(dirname(abs), splitHref(match[1]).path);
@@ -244,7 +244,7 @@ export function checkSchemas(distDir: string, adapter: Adapter): string[] {
 	const problems: string[] = [];
 	const skillsRoot = join(distDir, adapter.install.skills);
 	const skills = new Set(walkFiles(skillsRoot).filter((path) => /^[^/]+\/SKILL\.md$/.test(path)).map((path) => path.split("/")[0]));
-	for (const skill of skills) problems.push(...lintSkillFolder(join(skillsRoot, skill)));
+	for (const skill of skills) problems.push(...lintSkillFolder(join(skillsRoot, skill), { links: false }));
 	const agentsRoot = join(distDir, adapter.install.agents);
 	for (const path of walkFiles(agentsRoot)) {
 		if (!path.endsWith(".agent.md")) problems.push(`${adapter.install.agents}${path}: agent files must end in .agent.md`);
@@ -263,16 +263,29 @@ export function checkSchemas(distDir: string, adapter: Adapter): string[] {
 	return problems;
 }
 
-/** Every relative link in a shipped Markdown file resolves inside the build. */
-export function checkLinks(distDir: string): string[] {
+/**
+ * Every relative link in a shipped Markdown file resolves inside the build. A link that is already dead in
+ * the upstream source is upstream's own mistake, which the exact copy cannot fix, so it does not count.
+ */
+export function checkLinks(distDir: string, coreDir: string): string[] {
 	const problems: string[] = [];
 	const files = walkFiles(distDir);
 	const fileSet = new Set(files);
 	const isDir = (path: string) => files.some((file) => file.startsWith(`${path}/`));
+	const coreFiles = new Set(walkFiles(coreDir));
+	const coreHas = (path: string) => coreFiles.has(path) || [...coreFiles].some((file) => file.startsWith(`${path}/`));
+	const sourceOf = new Map(readManifest(distDir).files.filter((entry) => entry.origin === "core" && entry.source).map((entry) => [entry.path, entry.source as string]));
 	for (const path of files.filter((file) => file.endsWith(".md"))) {
+		const source = sourceOf.get(path);
+		const deadUpstream = new Set<string>();
+		if (source) {
+			for (const match of readText(join(coreDir, source)).matchAll(LINK)) {
+				if (isRelativeHref(match[1]) && !coreHas(resolveRelative(source, splitHref(match[1]).path))) deadUpstream.add(match[1]);
+			}
+		}
 		for (const match of readText(join(distDir, path)).matchAll(LINK)) {
 			const href = match[1];
-			if (!isRelativeHref(href)) continue;
+			if (!isRelativeHref(href) || deadUpstream.has(href)) continue;
 			const target = resolveRelative(path, splitHref(href).path);
 			if (target === "" || target.startsWith("..")) {
 				problems.push(`${path}: link ${href} leaves the build`);

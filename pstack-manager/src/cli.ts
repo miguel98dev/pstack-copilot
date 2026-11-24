@@ -8,9 +8,12 @@ const HELP = `pstack-manager ${MANAGER_VERSION}
 Usage: pstack <command> [options]
 
 Upstream and core
-  upstream check [--ref R] [--repository URL] [--source DIR]   Show what a sync would change
-  upstream sync  [--ref R] [--repository URL] [--source DIR] [--force] [--no-gate]
-  core verify                                                  Check pstack-core against UPSTREAM.lock.json
+  upstream check    [--ref R] [--source DIR] [--json] [--exit-code]   Analyze what a sync would change; writes nothing
+  upstream sync     [--ref R] [--source DIR] [--prepare] [--scripts]  Update pstack-core and prepare the Copilot migration
+  upstream run      [--base B] [--no-push] [--gh BIN]                 sync, then branch, commit, push, and open a pull request or issue
+  upstream rollback [--to ID|SHA|VERSION] [--dry-run] [--commit|--pr] Revert the newest sync with git, keeping later Copilot work
+  upstream history [--adopt] | report [ID]                            Synchronization history and its reports
+  core verify                                                         Check pstack-core against UPSTREAM.lock.json
 
 Adapters
   build    [--adapter copilot]                                 Build dist/<adapter>/<version>

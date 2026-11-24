@@ -96,15 +96,15 @@ test("validate catches a hand-edited build file and an undeclared extra file", (
 	assert.match(found, /dist file not in manifest: skills\/beta\/notes\.md/);
 });
 
-test("an upstream skill with no traceability entry or a new Cursor term without an adapter row blocks the sync", () => {
+test("a new upstream skill gets a pending entry and the sync prepares it; a new Cursor name blocks it", () => {
 	const world = synced();
 	assert.equal(cli(world, "build").code, 0);
 	commitUpstream(world.upstream, "pstack/skills/gamma/SKILL.md", "---\nname: gamma\ndescription: New. Use for /gamma.\n---\n\n# Gamma\n\nUse the `/loop` command with Plan.\n");
-	const blocked = cli(world, "upstream", "sync", "--source", world.upstream);
-	assert.equal(blocked.code, 1);
-	assert.match(blocked.out, /status: blocked/);
-	assert.match(blocked.out, /no traceability entry for skill:gamma/);
-	assert.ok(!existsSync(join(world.paths.coreUpstream, "skills/gamma")), "a blocked sync leaves the core as it was");
+	const prepared = cli(world, "upstream", "sync", "--source", world.upstream);
+	assert.equal(prepared.code, 0, prepared.out);
+	assert.match(prepared.out, /status: prepared/);
+	assert.ok(existsSync(join(world.paths.coreUpstream, "skills/gamma/SKILL.md")));
+	assert.match(readFileSync(join(world.repo, "pstack-copilot/mappings/features.json"), "utf8"), /"id": "skill:gamma",\n\t\t\t"kind": "skill",\n\t\t\t"status": "pending"/);
 	assert.equal(cli(world, "core", "verify").code, 0);
 });
 

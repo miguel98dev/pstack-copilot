@@ -8,6 +8,9 @@ export interface Paths {
 	readonly coreUpstream: string;
 	readonly lockFile: string;
 	readonly changelog: string;
+	readonly syncDir: string;
+	readonly historyFile: string;
+	readonly reportsDir: string;
 	readonly distRoot: string;
 	readonly pstackHome: string;
 	readonly copilotHome: string;
@@ -25,6 +28,9 @@ export function resolvePaths(env: NodeJS.ProcessEnv = process.env): Paths {
 		coreUpstream: join(coreDir, "upstream"),
 		lockFile: join(coreDir, "UPSTREAM.lock.json"),
 		changelog: join(coreDir, "CHANGELOG.upstream.md"),
+		syncDir: join(repoRoot, "docs", "sync"),
+		historyFile: join(repoRoot, "docs", "sync", "history.json"),
+		reportsDir: join(repoRoot, "docs", "sync", "reports"),
 		distRoot: resolve(env.PSTACK_DIST || join(repoRoot, "dist")),
 		pstackHome: resolve(env.PSTACK_HOME || join(homedir(), ".pstack")),
 		copilotHome: resolve(env.COPILOT_HOME || join(homedir(), ".copilot")),

@@ -10,8 +10,11 @@ pstack-manager/bin/pstack help
 
 | Command | What it does |
 | --- | --- |
-| `upstream check` | Fetches `cursor/plugins` (sparse, shallow) and shows what a sync would change. Writes nothing. |
-| `upstream sync [--ref R] [--source DIR] [--force] [--no-gate]` | Replaces `pstack-core/upstream/` and the lock with the fetched commit after checking the staged copy against the adapter. A failed check leaves the core as it was. |
+| `upstream check [--ref R] [--source DIR] [--json] [--exit-code]` | Fetches `cursor/plugins` (sparse, shallow), then analyzes the changes, their impact on the Copilot adaptation, conflicts, the migration, and the compatibility checks. Writes nothing. With `--exit-code`: 0 nothing to do, 10 changes, 11 blocked. |
+| `upstream sync [--prepare] [--scripts] [--allow-downgrade] [--allow-rewrite] [--include-rolled-back] [--report-out F]` | Applies a sync as one transaction: the new core, the lock, the migrated mappings, the history, and a report. Stops on a conflict or a failing check and writes nothing. `--prepare` writes it anyway and marks it `needs-adapter-work`. |
+| `upstream run [--base B] [--no-push] [--gh BIN]` | `sync --prepare`, then branch `sync/upstream-<commit>`, commit, push, and open or update the pull request, as a draft when adapter work is left. A conflict opens an issue instead. Never merges. |
+| `upstream rollback [--to X] [--dry-run] [--commit\|--pr]` | Reverts the newest sync with git, keeping later Copilot work. |
+| `upstream history`, `upstream report [ID]` | The synchronization history and its reports. |
 | `core verify` | Compares every core file's bytes and mode with `UPSTREAM.lock.json`. |
 | `build [--adapter copilot]` | Builds `dist/<adapter>/<core version>+<adapter>.<revision>/` and its `dist-manifest.json`. |
 | `validate [--skip-scripts]` | Runs every check below. Exit 1 on any problem. |
@@ -19,7 +22,7 @@ pstack-manager/bin/pstack help
 | `lint-skill <dir>...` | Checks skill folders against the Agent Skills rules Copilot applies. The `create-skill` skill calls it. |
 | `install [--scope user\|workspace] [--repo DIR] [--force]` | Builds, validates, stores the version, and exposes it to Copilot. |
 | `uninstall [--scope ...]` | Removes only what pstack created. |
-| `update [--ref R]` | `upstream sync`, then `install`. A blocked sync installs nothing. |
+| `update [--ref R]` | `upstream sync`, then `install`. A conflict or a failing check installs nothing. |
 | `rollback [version]` | Points `current` at an earlier stored version. |
 | `status`, `versions`, `doctor` | Active version and links; stored versions; runtimes, integrity, conflicts, and model setup. |
 | `models init [--budget large\|medium\|small] [--scope ...] [--force]` | Writes the `pstack-models` instruction from the Copilot defaults. |
@@ -45,7 +48,8 @@ src/
   cli.ts               argument parsing and lazy command loading
   paths.ts             every location, with environment overrides
   lib/                 fs helpers, frontmatter subset parser, Markdown links and reversible insertion
-  upstream/            fetch (git sparse or local checkout), lock, vocabulary from upstream's generator, diff, sync
+  upstream/            fetch and history, lock, vocabulary, diff with renames, impact, conflicts, migration,
+                       pipeline (transaction), report, history, publish (git and gh), rollback
   build/               adapter spec parsing, vocabulary classifier, engine, models, matrix
   validate/            checks, the aggregate, the sync gate
   install/             state, user install (versions, current, links), workspace install

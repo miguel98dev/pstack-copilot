@@ -3,4 +3,5 @@ node_modules/
 .DS_Store
 *.log
 pstack-core/.staging-*/
+pstack-core/upstream.previous-*/
 tests/.tmp/
