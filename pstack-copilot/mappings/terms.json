@@ -1,0 +1,21 @@
+{
+	"note": "Cursor names that upstream's harness generator does not list but that need a GitHub Copilot mapping. Each key must appear in the pstack-copilot adapter skill; a skill whose files match a pattern gets the adapter line.",
+	"terms": [
+		{ "key": "`/loop`", "pattern": "/loop\\b", "flags": "" },
+		{ "key": "Custom Mode", "pattern": "[Cc]ustom [Mm]odes?", "flags": "" },
+		{ "key": "cursor-team-kit", "pattern": "cursor-team-kit", "flags": "" },
+		{ "key": "control-ui", "pattern": "control-ui", "flags": "" },
+		{ "key": "control-cli", "pattern": "control-cli", "flags": "" },
+		{ "key": "`/deslop`", "pattern": "/deslop|`deslop`", "flags": "" },
+		{ "key": "create-skill", "pattern": "\\bcreate-skill\\b", "flags": "" },
+		{ "key": "/visualize", "pattern": "/visualize", "flags": "" },
+		{ "key": "image-generation", "pattern": "image-generation|image generation", "flags": "i" },
+		{ "key": "Plan Mode", "pattern": "Plan Mode", "flags": "i" },
+		{ "key": "SendToUser", "pattern": "SendToUser", "flags": "" },
+		{ "key": "update_state", "pattern": "update_state", "flags": "" },
+		{ "key": "/in-cloud", "pattern": "/in-cloud", "flags": "" },
+		{ "key": "`/autopilot`", "pattern": "`/autopilot`|built-in babysit", "flags": "" },
+		{ "key": "/add-plugin", "pattern": "/add-plugin", "flags": "" },
+		{ "key": "Application Support/Cursor", "pattern": "Application Support/Cursor", "flags": "" }
+	]
+}

@@ -1,0 +1,21 @@
+{
+	"note": "Cursor model slugs mapped to GitHub Copilot model ids and reasoning efforts. pstack models init writes the role lines from these defaults; the pstack-copilot adapter skill states the same table for agents.",
+	"ladder": ["low", "medium", "high", "xhigh"],
+	"slugs": [
+		{ "pattern": "^claude-opus-5-5-(low|medium|high|xhigh)(-fast)?$", "model": "claude-opus-5.5" },
+		{ "pattern": "^claude-fable-5-2-(low|medium|high|xhigh)$", "model": "gpt-6.1-sol", "substitute": "Copilot does not offer Fable; another vendor keeps the panel at three vendors." },
+		{ "pattern": "^gemini-4-neon-(low|medium|high|xhigh)$", "model": "gemini-4-neon" }
+	],
+	"roles": [
+		{ "role": "feature, refactoring", "cursor": ["claude-opus-5-5-xhigh-fast"] },
+		{ "role": "bug-fix", "cursor": ["claude-opus-5-5-xhigh-fast"] },
+		{ "role": "perf-issue", "cursor": ["claude-opus-5-5-xhigh-fast"] },
+		{ "role": "hillclimb", "cursor": ["claude-opus-5-5-xhigh-fast"] },
+		{ "role": "judgment and prose", "cursor": ["claude-opus-5-5-xhigh-fast"] },
+		{ "role": "arena runners", "cursor": ["claude-fable-5-2-high", "claude-opus-5-5-high-fast", "gemini-4-neon-xhigh"] },
+		{ "role": "arena cross-judge pool", "cursor": ["claude-opus-5-5-high-fast", "gemini-4-neon-xhigh"] },
+		{ "role": "swarm workers", "cursor": ["claude-opus-5-5-high-fast"] },
+		{ "role": "interrogate reviewers", "cursor": ["claude-fable-5-2-high", "claude-opus-5-5-high-fast", "gemini-4-neon-xhigh"] }
+	],
+	"panelRoles": ["arena runners", "arena cross-judge pool", "interrogate reviewers"]
+}

@@ -1,0 +1,15 @@
+{
+	"note": "How each upstream agent file becomes a GitHub Copilot custom agent. Kept frontmatter lines are copied verbatim; dropped keys must be listed; set keys use the Copilot custom-agent schema.",
+	"agents": {
+		"poteto-agent": {
+			"drop": ["is_background", "model"],
+			"set": { "model": "claude-opus-5.5", "reasoning-effort": "xhigh", "user-invocable": false },
+			"why": "Cursor's model slug claude-opus-5-5-xhigh-fast maps to claude-opus-5.5 at xhigh. is_background becomes mode: background on each task call. The agent is a delegate, so it is hidden from the agent picker."
+		},
+		"comment-sicko": {
+			"drop": [],
+			"set": { "user-invocable": false },
+			"why": "A delegate that no-comments spawns, hidden from the agent picker as upstream advises invoking it through /no-comments."
+		}
+	}
+}

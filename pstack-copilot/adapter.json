@@ -1,0 +1,38 @@
+{
+	"id": "copilot",
+	"displayName": "GitHub Copilot (Copilot harness in VS Code, GitHub Copilot app, Copilot CLI)",
+	"revision": 3,
+	"coreVersions": ["0.15.48"],
+	"plugin": {
+		"name": "pstack",
+		"descriptionSuffix": "GitHub Copilot port of pstack by Lauren Tan, built by pstack-copilot.",
+		"keywords": ["copilot", "vscode", "github-copilot"]
+	},
+	"relocate": [
+		{ "from": "skills/", "to": "skills/" },
+		{ "from": "docs/", "to": "skills/pstack-copilot/upstream/docs/" },
+		{ "from": "README.md", "to": "skills/pstack-copilot/upstream/README.md" },
+		{ "from": "LICENSE", "to": "skills/pstack-copilot/upstream/LICENSE" },
+		{ "from": "assets/", "to": "assets/" }
+	],
+	"copies": [{ "from": "LICENSE", "to": "LICENSE" }],
+	"exclude": ["automations/**", ".cursor-plugin/**", ".gitignore", "plugin.json"],
+	"agents": { "from": "agents/", "to": "com.github.copilot/agents/", "suffix": ".agent.md", "mapping": "mappings/agents.json" },
+	"excludedLinkBase": "https://github.com/cursor/plugins/{kind}/{commit}/pstack/",
+	"adapterSkill": "skills/pstack-copilot/SKILL.md",
+	"adapterLine": {
+		"skill": "On GitHub Copilot, read [the Copilot adapter](../pstack-copilot/SKILL.md) once per session before you follow this skill. It maps the Cursor names in pstack skills to GitHub Copilot.",
+		"agent": "On GitHub Copilot, read the `pstack-copilot` skill once per session before you follow this file. It is `pstack-copilot/SKILL.md` in the same skills folder as `poteto-mode`: `~/.copilot/skills/`, `.github/skills/`, or `~/.pstack/current/skills/`. It maps the Cursor names in pstack to GitHub Copilot."
+	},
+	"vocabulary": "mappings/terms.json",
+	"skillFrontmatter": "mappings/skills.json",
+	"models": "mappings/models.json",
+	"features": "mappings/features.json",
+	"overlays": "overlays",
+	"matrix": "skills/pstack-copilot/COMPATIBILITY.md",
+	"install": {
+		"skills": "skills/",
+		"agents": "com.github.copilot/agents/",
+		"instructions": "com.github.copilot/rules/"
+	}
+}

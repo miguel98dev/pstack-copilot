@@ -1,0 +1,972 @@
+{
+	"note": "Traceability: one entry per upstream skill, playbook, agent, script, Cursor term, and automation, plus each Copilot addition. pstack validate fails when an upstream item has no entry or an entry has no item. validation is vscode-validated only with evidence from a real VS Code session.",
+	"features": [
+		{
+			"id": "skill:poteto-mode",
+			"kind": "skill",
+			"status": "adapted",
+			"copilot": "Slash skill plus the poteto-mode agent for Custom Mode. Subagents run as task with agent_type poteto-agent, mode background, and the role's model and reasoning_effort; the todolist is the sql todos table.",
+			"validation": "vscode-validated",
+			"limits": "With Claude Sonnet 5.5 as the parent (sessions 7f6dc468, c181c575) the agent fixed the bug but skipped the playbook, todos, and delegation. Use an Opus-class parent, as pstack does by default.",
+			"evidence": "tests/e2e/RESULTS.md poteto-mode, session f0123a5b (Opus 5.5): adapter, Bug fix playbook, todos, failing test committed before the fix, poteto-agent delegate, principles named"
+		},
+		{
+			"id": "skill:poteto-help",
+			"kind": "skill",
+			"status": "adapted",
+			"copilot": "Slash skill; Cursor install, Custom Mode, and /loop answers come from the pstack-copilot skill's poteto-help section.",
+			"validation": "static"
+		},
+		{
+			"id": "skill:setup-pstack",
+			"kind": "skill",
+			"status": "adapted",
+			"copilot": "Detects models from the task tool schema, asks with ask_user, writes ~/.copilot/instructions/pstack-models.instructions.md (an always-applied personal instruction). pstack models init writes the same file non-interactively.",
+			"validation": "static"
+		},
+		{
+			"id": "skill:architect",
+			"kind": "skill",
+			"status": "native",
+			"copilot": "Slash skill; routes to arena by path.",
+			"validation": "vscode-validated",
+			"evidence": "tests/e2e/RESULTS.md architect, session 9f85ab89: traced callers, two shapes, picked one, no code",
+			"limits": "The agent did not read the adapter; this skill did not need it."
+		},
+		{
+			"id": "skill:arena",
+			"kind": "skill",
+			"status": "adapted",
+			"copilot": "N task calls in one message with mode background, one worktree or scratch folder each, then one explore judge from another vendor.",
+			"validation": "vscode-validated",
+			"limits": "Fable seat replaced by gpt-6.1-sol.",
+			"evidence": "tests/e2e/RESULTS.md arena, session 3c878d04: 3 vendors in background, explore judge from another vendor, graft, 12 tests pass"
+		},
+		{
+			"id": "skill:swarm",
+			"kind": "skill",
+			"status": "partial",
+			"copilot": "N general-purpose task calls with mode background; PASS, ISSUES, BLOCKED contract unchanged.",
+			"validation": "vscode-validated",
+			"limits": "environment: cloud runs locally; the run did not print the Ran-locally note the adapter asks for.",
+			"evidence": "tests/e2e/RESULTS.md swarm, session 9b0e309f: 3 background general-purpose workers on the swarm workers model, PASS/ISSUES/PASS table"
+		},
+		{
+			"id": "skill:interrogate",
+			"kind": "skill",
+			"status": "adapted",
+			"copilot": "Adversaries spawned through arena's fan-out as general-purpose tasks in their own worktrees; findings kept only with a rerun command.",
+			"validation": "vscode-validated",
+			"evidence": "tests/e2e/RESULTS.md interrogate, session 7012adf7: 3 vendors in worktrees, rerun-verified totalPages bug, no fixes"
+		},
+		{
+			"id": "skill:how",
+			"kind": "skill",
+			"status": "adapted",
+			"copilot": "One explore task (read-only) with an explicit model.",
+			"validation": "static"
+		},
+		{
+			"id": "skill:why",
+			"kind": "skill",
+			"status": "native",
+			"copilot": "git log and blame, gh, GitHub MCP.",
+			"validation": "static",
+			"limits": "Needs gh or the GitHub MCP for PR discussions."
+		},
+		{
+			"id": "skill:teach",
+			"kind": "skill",
+			"status": "adapted",
+			"copilot": "Runs how and why by path; pictures become Mermaid when no image tool exists.",
+			"validation": "static",
+			"limits": "No guaranteed image generation."
+		},
+		{
+			"id": "skill:recall",
+			"kind": "skill",
+			"status": "adapted",
+			"copilot": "Mines ~/.copilot/session-state sessions whose cwd is in the repo, through session_store_sql when present; MCP sources if configured.",
+			"validation": "static"
+		},
+		{
+			"id": "skill:ketchup",
+			"kind": "skill",
+			"status": "adapted",
+			"copilot": "/visualize becomes Mermaid.",
+			"validation": "static"
+		},
+		{
+			"id": "skill:ketchup-video",
+			"kind": "skill",
+			"status": "partial",
+			"copilot": "Same as ketchup, rendered to a video file by a local renderer.",
+			"validation": "static",
+			"limits": "Needs a video renderer such as ffmpeg; VS Code chat may show a link, not an embedded player."
+		},
+		{
+			"id": "skill:blast-radius",
+			"kind": "skill",
+			"status": "native",
+			"copilot": "Unchanged.",
+			"validation": "static"
+		},
+		{
+			"id": "skill:benchmark-checklist",
+			"kind": "skill",
+			"status": "native",
+			"copilot": "Unchanged.",
+			"validation": "static"
+		},
+		{
+			"id": "skill:tdd",
+			"kind": "skill",
+			"status": "native",
+			"copilot": "Unchanged.",
+			"validation": "vscode-validated",
+			"evidence": "tests/e2e/RESULTS.md tdd, session 31020e32: failing test first, minimal fix, passing rerun"
+		},
+		{
+			"id": "skill:no-comments",
+			"kind": "skill",
+			"status": "adapted",
+			"copilot": "Spawns the comment-sicko custom agent with task.",
+			"validation": "vscode-validated",
+			"evidence": "tests/e2e/RESULTS.md no-comments, session 4cc0e1e2: comment-sicko subagent, 5 comments deleted, flagged clamp fixed"
+		},
+		{
+			"id": "skill:unslop",
+			"kind": "skill",
+			"status": "native",
+			"copilot": "Unchanged.",
+			"validation": "static"
+		},
+		{
+			"id": "skill:technical-writing",
+			"kind": "skill",
+			"status": "native",
+			"copilot": "Unchanged; adapter line only for skill routing.",
+			"validation": "static"
+		},
+		{
+			"id": "skill:bro",
+			"kind": "skill",
+			"status": "native",
+			"copilot": "Unchanged.",
+			"validation": "static"
+		},
+		{
+			"id": "skill:in-your-own-words",
+			"kind": "skill",
+			"status": "native",
+			"copilot": "Unchanged.",
+			"validation": "static"
+		},
+		{
+			"id": "skill:sharpen",
+			"kind": "skill",
+			"status": "native",
+			"copilot": "Unchanged.",
+			"validation": "static"
+		},
+		{
+			"id": "skill:reframe",
+			"kind": "skill",
+			"status": "native",
+			"copilot": "Unchanged; checks links with the web fetch tool.",
+			"validation": "static"
+		},
+		{
+			"id": "skill:typescript-best-practices",
+			"kind": "skill",
+			"status": "native",
+			"copilot": "Unchanged slash skill.",
+			"validation": "static",
+			"limits": "The upstream paths field is ignored, as it is inert in Cursor with disable-model-invocation."
+		},
+		{
+			"id": "skill:figure-it-out",
+			"kind": "skill",
+			"status": "adapted",
+			"copilot": "todolist and worktree mapping.",
+			"validation": "static"
+		},
+		{
+			"id": "skill:show-me-your-work",
+			"kind": "skill",
+			"status": "adapted",
+			"copilot": "log.sh unchanged; audits rows against the session's events.jsonl; cross-vendor reviewer through task model.",
+			"validation": "static"
+		},
+		{
+			"id": "skill:create-verification-skill",
+			"kind": "skill",
+			"status": "adapted",
+			"copilot": "Generates .github/skills/verify-<app>/.",
+			"validation": "static"
+		},
+		{
+			"id": "skill:maintain-verification-skill",
+			"kind": "skill",
+			"status": "adapted",
+			"copilot": "Looks for .github/skills/verify-*.",
+			"validation": "static"
+		},
+		{
+			"id": "skill:create-formal-verification-skill",
+			"kind": "skill",
+			"status": "native",
+			"copilot": "Unchanged; generated skill goes to .github/skills/.",
+			"validation": "static",
+			"limits": "TLA+ checks need statechart's dependencies."
+		},
+		{
+			"id": "skill:maintain-formal-verification-skill",
+			"kind": "skill",
+			"status": "native",
+			"copilot": "Unchanged.",
+			"validation": "static"
+		},
+		{
+			"id": "skill:statechart",
+			"kind": "skill",
+			"status": "native",
+			"copilot": "Scripts unchanged.",
+			"validation": "static",
+			"limits": "Needs Node 22.18+, Bun, or Deno, plus mise, Java and network on first run."
+		},
+		{
+			"id": "skill:automate-me",
+			"kind": "skill",
+			"status": "adapted",
+			"copilot": "ask_user, session-store mining scoped to the repo's cwd, the create-skill skill of this port, .github/skills or ~/.copilot/skills.",
+			"validation": "static"
+		},
+		{
+			"id": "skill:reflect",
+			"kind": "skill",
+			"status": "adapted",
+			"copilot": "Current transcript is the session's events.jsonl; copies skills to .github/skills or ~/.copilot/skills before editing.",
+			"validation": "static"
+		},
+		{
+			"id": "skill:correct",
+			"kind": "skill",
+			"status": "native",
+			"copilot": "Rule table goes in AGENTS.md or .github/copilot-instructions.md.",
+			"validation": "static"
+		},
+		{
+			"id": "skill:make-bot-ui",
+			"kind": "skill",
+			"status": "unsupported",
+			"copilot": "Shipped unchanged; every step that needs Cursor routines, update_state, SendToUser, or the api2.cursor.sh webhook is skipped with one line.",
+			"validation": "static",
+			"limits": "Copilot has no webhook-triggered routine or secret-request card."
+		},
+		{
+			"id": "skill:principle-attack-the-premise",
+			"kind": "skill",
+			"status": "native",
+			"copilot": "Unchanged principle skill.",
+			"validation": "static"
+		},
+		{
+			"id": "skill:principle-boundary-discipline",
+			"kind": "skill",
+			"status": "native",
+			"copilot": "Unchanged principle skill.",
+			"validation": "static"
+		},
+		{
+			"id": "skill:principle-build-the-lever",
+			"kind": "skill",
+			"status": "native",
+			"copilot": "Unchanged principle skill.",
+			"validation": "static"
+		},
+		{
+			"id": "skill:principle-encode-lessons-in-structure",
+			"kind": "skill",
+			"status": "native",
+			"copilot": "Unchanged principle skill.",
+			"validation": "static"
+		},
+		{
+			"id": "skill:principle-exhaust-the-design-space",
+			"kind": "skill",
+			"status": "native",
+			"copilot": "Unchanged principle skill.",
+			"validation": "static"
+		},
+		{
+			"id": "skill:principle-experience-first",
+			"kind": "skill",
+			"status": "native",
+			"copilot": "Unchanged principle skill.",
+			"validation": "static"
+		},
+		{
+			"id": "skill:principle-explain-the-number",
+			"kind": "skill",
+			"status": "native",
+			"copilot": "Unchanged principle skill.",
+			"validation": "static"
+		},
+		{
+			"id": "skill:principle-fix-root-causes",
+			"kind": "skill",
+			"status": "native",
+			"copilot": "Unchanged principle skill.",
+			"validation": "static"
+		},
+		{
+			"id": "skill:principle-foundational-thinking",
+			"kind": "skill",
+			"status": "native",
+			"copilot": "Unchanged principle skill.",
+			"validation": "static"
+		},
+		{
+			"id": "skill:principle-guard-the-context-window",
+			"kind": "skill",
+			"status": "native",
+			"copilot": "Unchanged principle skill.",
+			"validation": "static"
+		},
+		{
+			"id": "skill:principle-laziness-protocol",
+			"kind": "skill",
+			"status": "native",
+			"copilot": "Unchanged principle skill.",
+			"validation": "static"
+		},
+		{
+			"id": "skill:principle-make-operations-idempotent",
+			"kind": "skill",
+			"status": "native",
+			"copilot": "Unchanged principle skill.",
+			"validation": "static"
+		},
+		{
+			"id": "skill:principle-migrate-callers-then-delete-legacy-apis",
+			"kind": "skill",
+			"status": "native",
+			"copilot": "Unchanged principle skill.",
+			"validation": "static"
+		},
+		{
+			"id": "skill:principle-minimize-reader-load",
+			"kind": "skill",
+			"status": "native",
+			"copilot": "Unchanged principle skill.",
+			"validation": "static"
+		},
+		{
+			"id": "skill:principle-model-the-domain",
+			"kind": "skill",
+			"status": "native",
+			"copilot": "Unchanged principle skill.",
+			"validation": "static"
+		},
+		{
+			"id": "skill:principle-never-block-on-the-human",
+			"kind": "skill",
+			"status": "native",
+			"copilot": "Unchanged principle skill.",
+			"validation": "static"
+		},
+		{
+			"id": "skill:principle-outcome-oriented-execution",
+			"kind": "skill",
+			"status": "native",
+			"copilot": "Unchanged principle skill.",
+			"validation": "static"
+		},
+		{
+			"id": "skill:principle-prove-it-works",
+			"kind": "skill",
+			"status": "native",
+			"copilot": "Unchanged principle skill.",
+			"validation": "static"
+		},
+		{
+			"id": "skill:principle-redesign-from-first-principles",
+			"kind": "skill",
+			"status": "native",
+			"copilot": "Unchanged principle skill.",
+			"validation": "static"
+		},
+		{
+			"id": "skill:principle-separate-before-serializing-shared-state",
+			"kind": "skill",
+			"status": "native",
+			"copilot": "Unchanged principle skill.",
+			"validation": "static"
+		},
+		{
+			"id": "skill:principle-sequence-verifiable-units",
+			"kind": "skill",
+			"status": "native",
+			"copilot": "Unchanged principle skill.",
+			"validation": "static"
+		},
+		{
+			"id": "skill:principle-subtract-before-you-add",
+			"kind": "skill",
+			"status": "native",
+			"copilot": "Unchanged principle skill.",
+			"validation": "static"
+		},
+		{
+			"id": "skill:principle-test-behavior-not-implementation",
+			"kind": "skill",
+			"status": "native",
+			"copilot": "Unchanged principle skill.",
+			"validation": "static"
+		},
+		{
+			"id": "skill:principle-type-system-discipline",
+			"kind": "skill",
+			"status": "native",
+			"copilot": "Unchanged principle skill.",
+			"validation": "static"
+		},
+		{
+			"id": "playbook:investigation",
+			"kind": "playbook",
+			"status": "native",
+			"copilot": "Unchanged.",
+			"validation": "static"
+		},
+		{
+			"id": "playbook:bug-fix",
+			"kind": "playbook",
+			"status": "adapted",
+			"copilot": "Control skill becomes the project's verify-* skill or VS Code browser tools; Cursor's /loop becomes Copilot's /loop or /every scheduled prompts.",
+			"validation": "vscode-validated",
+			"evidence": "tests/e2e/RESULTS.md poteto-mode, session f0123a5b"
+		},
+		{
+			"id": "playbook:perf-issue",
+			"kind": "playbook",
+			"status": "adapted",
+			"copilot": "Same control mapping.",
+			"validation": "static"
+		},
+		{
+			"id": "playbook:hillclimb",
+			"kind": "playbook",
+			"status": "adapted",
+			"copilot": "Worktree per hypothesis; unattended runs use Copilot's /every scheduled prompts with Autopilot.",
+			"validation": "static"
+		},
+		{
+			"id": "playbook:runtime-forensics",
+			"kind": "playbook",
+			"status": "adapted",
+			"copilot": "CDP through VS Code browser tools or node --inspect.",
+			"validation": "static"
+		},
+		{
+			"id": "playbook:trace-forensics",
+			"kind": "playbook",
+			"status": "native",
+			"copilot": "Unchanged.",
+			"validation": "static"
+		},
+		{
+			"id": "playbook:feature",
+			"kind": "playbook",
+			"status": "adapted",
+			"copilot": "architect and arena by path; poteto-agent delegate with the feature model.",
+			"validation": "static"
+		},
+		{
+			"id": "playbook:refactoring",
+			"kind": "playbook",
+			"status": "native",
+			"copilot": "Unchanged.",
+			"validation": "static"
+		},
+		{
+			"id": "playbook:prototype",
+			"kind": "playbook",
+			"status": "adapted",
+			"copilot": "Screenshots through VS Code browser tools.",
+			"validation": "static"
+		},
+		{
+			"id": "playbook:visual-parity",
+			"kind": "playbook",
+			"status": "adapted",
+			"copilot": "Image diff with Playwright; /loop becomes Copilot's /loop or /every scheduled prompts.",
+			"validation": "static"
+		},
+		{
+			"id": "playbook:authoring-a-skill",
+			"kind": "playbook",
+			"status": "adapted",
+			"copilot": "Uses this port's create-skill skill and pstack lint-skill.",
+			"validation": "static"
+		},
+		{
+			"id": "playbook:eval",
+			"kind": "playbook",
+			"status": "adapted",
+			"copilot": "Candidate transcripts read from ~/.copilot/session-state.",
+			"validation": "static"
+		},
+		{
+			"id": "playbook:babysit",
+			"kind": "playbook",
+			"status": "adapted",
+			"copilot": "gh plus watch-pr (Bun); Copilot review comments triaged as Bugbot threads.",
+			"validation": "static",
+			"limits": "Needs gh; watch-pr does not report Copilot review as a Bugbot pass."
+		},
+		{
+			"id": "playbook:shipping",
+			"kind": "playbook",
+			"status": "partial",
+			"copilot": "Per-PR verifiers run as local background subagents in worktrees; watch-pr in a background terminal, with /every as the heartbeat.",
+			"validation": "static",
+			"limits": "No cloud verifiers."
+		},
+		{
+			"id": "playbook:autonomous-run",
+			"kind": "playbook",
+			"status": "adapted",
+			"copilot": "Copilot's /loop or /every plus Autopilot.",
+			"validation": "static"
+		},
+		{
+			"id": "playbook:autopilot-full",
+			"kind": "playbook",
+			"status": "partial",
+			"copilot": "Owners run as local background subagents; /loop 1h becomes /every 1h or an Automation; root store is the session's files/ folder.",
+			"validation": "static",
+			"limits": "No cloud owners; /deslop not shipped."
+		},
+		{
+			"id": "playbook:autopilot-stack",
+			"kind": "playbook",
+			"status": "partial",
+			"copilot": "Same as autopilot-full without the merge.",
+			"validation": "static"
+		},
+		{
+			"id": "playbook:session-pickup",
+			"kind": "playbook",
+			"status": "adapted",
+			"copilot": "Prior trail from ~/.copilot/session-state or a pushed branch.",
+			"validation": "static"
+		},
+		{
+			"id": "playbook:pause-safely",
+			"kind": "playbook",
+			"status": "native",
+			"copilot": "Unchanged.",
+			"validation": "static"
+		},
+		{
+			"id": "playbook:multi-phase-plan",
+			"kind": "playbook",
+			"status": "native",
+			"copilot": "Unchanged.",
+			"validation": "static"
+		},
+		{
+			"id": "playbook:worktree-cleanup",
+			"kind": "playbook",
+			"status": "adapted",
+			"copilot": "Cursor cache paths map to VS Code and ~/.copilot/session-state.",
+			"validation": "static",
+			"limits": "worktree-audit.sh reads ~/.cursor/projects, so its newest-chat column is empty on Copilot."
+		},
+		{
+			"id": "playbook:opening-a-pr",
+			"kind": "playbook",
+			"status": "adapted",
+			"copilot": "gh pr create without --draft.",
+			"validation": "static",
+			"limits": "/deslop not shipped."
+		},
+		{
+			"id": "agent:poteto-agent",
+			"kind": "agent",
+			"status": "adapted",
+			"copilot": "Custom agent ~/.copilot/agents/poteto-agent.agent.md with model claude-opus-5.5, reasoning-effort xhigh, user-invocable false; body verbatim plus the adapter line.",
+			"validation": "vscode-validated",
+			"evidence": "tests/e2e/RESULTS.md poteto-mode, session f0123a5b: task agent_type poteto-agent on the bug-fix model"
+		},
+		{
+			"id": "agent:comment-sicko",
+			"kind": "agent",
+			"status": "native",
+			"copilot": "Custom agent comment-sicko.agent.md, user-invocable false, body verbatim plus the adapter line.",
+			"validation": "vscode-validated",
+			"evidence": "tests/e2e/RESULTS.md no-comments, session 4cc0e1e2: task agent_type comment-sicko"
+		},
+		{
+			"id": "script:skills/poteto-mode/scripts/watch-pr/watch-pr",
+			"kind": "script",
+			"status": "native",
+			"copilot": "Unchanged Bun CLI over gh.",
+			"validation": "untested",
+			"limits": "Needs Bun, gh, and network for its first bun install."
+		},
+		{
+			"id": "script:skills/poteto-mode/scripts/worktree-audit.sh",
+			"kind": "script",
+			"status": "partial",
+			"copilot": "Unchanged.",
+			"validation": "untested",
+			"limits": "Transcript column reads ~/.cursor/projects and stays empty on Copilot."
+		},
+		{
+			"id": "script:skills/show-me-your-work/scripts/log.sh",
+			"kind": "script",
+			"status": "native",
+			"copilot": "Unchanged.",
+			"validation": "untested"
+		},
+		{
+			"id": "script:skills/statechart/scripts/statechart",
+			"kind": "script",
+			"status": "native",
+			"copilot": "Unchanged.",
+			"validation": "untested",
+			"limits": "Needs mise, Java, and network to install TLC."
+		},
+		{
+			"id": "term:`Task`",
+			"kind": "term",
+			"status": "adapted",
+			"copilot": "task with name, description, agent_type, model, reasoning_effort, mode.",
+			"validation": "vscode-validated",
+			"evidence": "tests/e2e/RESULTS.md arena, swarm, interrogate, poteto-mode: task with name, description, agent_type, model, reasoning_effort, mode"
+		},
+		{
+			"id": "term:`AskQuestion`",
+			"kind": "term",
+			"status": "adapted",
+			"copilot": "ask_user forms.",
+			"validation": "static"
+		},
+		{
+			"id": "term:todolist",
+			"kind": "term",
+			"status": "adapted",
+			"copilot": "sql todos table or the todo tool.",
+			"validation": "vscode-validated",
+			"evidence": "tests/e2e/RESULTS.md arena, swarm, poteto-mode: phases and playbook steps in the sql todos table"
+		},
+		{
+			"id": "term:generalPurpose",
+			"kind": "term",
+			"status": "native",
+			"copilot": "agent_type general-purpose.",
+			"validation": "vscode-validated",
+			"evidence": "tests/e2e/RESULTS.md swarm and interrogate: agent_type general-purpose"
+		},
+		{
+			"id": "term:poteto-agent",
+			"kind": "term",
+			"status": "adapted",
+			"copilot": "agent_type poteto-agent custom agent.",
+			"validation": "vscode-validated",
+			"evidence": "tests/e2e/RESULTS.md poteto-mode, session f0123a5b"
+		},
+		{
+			"id": "term:comment-sicko",
+			"kind": "term",
+			"status": "adapted",
+			"copilot": "agent_type comment-sicko custom agent.",
+			"validation": "vscode-validated",
+			"evidence": "tests/e2e/RESULTS.md no-comments, session 4cc0e1e2"
+		},
+		{
+			"id": "term:`readonly: true`",
+			"kind": "term",
+			"status": "adapted",
+			"copilot": "agent_type explore with an explicit model.",
+			"validation": "vscode-validated",
+			"limits": "explore has no MCP tools.",
+			"evidence": "tests/e2e/RESULTS.md arena, session 3c878d04: judge ran as explore with an explicit model"
+		},
+		{
+			"id": "term:`environment: \"cloud\"`",
+			"kind": "term",
+			"status": "partial",
+			"copilot": "Local background subagent in its own git worktree.",
+			"validation": "vscode-validated",
+			"limits": "No cloud subagents on Copilot. The run did not print the Ran-locally note.",
+			"evidence": "tests/e2e/RESULTS.md swarm, session 9b0e309f: workers ran locally"
+		},
+		{
+			"id": "term:cloud_base_branch",
+			"kind": "term",
+			"status": "adapted",
+			"copilot": "Base of the worker's worktree.",
+			"validation": "static"
+		},
+		{
+			"id": "term:`run_in_background: true`",
+			"kind": "term",
+			"status": "native",
+			"copilot": "mode background plus read_agent.",
+			"validation": "vscode-validated",
+			"evidence": "tests/e2e/RESULTS.md arena, swarm, interrogate: mode background, then read_agent"
+		},
+		{
+			"id": "term:`resume`",
+			"kind": "term",
+			"status": "native",
+			"copilot": "write_agent to the idle agent.",
+			"validation": "static"
+		},
+		{
+			"id": "term:`file_attachments`",
+			"kind": "term",
+			"status": "native",
+			"copilot": "Paths in the brief.",
+			"validation": "static"
+		},
+		{
+			"id": "term:claude-",
+			"kind": "term",
+			"status": "adapted",
+			"copilot": "Copilot ids with reasoning_effort; Fable becomes gpt-6.1-sol.",
+			"validation": "static",
+			"limits": "Catalog depends on the user's plan."
+		},
+		{
+			"id": "term:grok-",
+			"kind": "term",
+			"status": "adapted",
+			"copilot": "Same Copilot id when offered.",
+			"validation": "static"
+		},
+		{
+			"id": "term:gpt-",
+			"kind": "term",
+			"status": "adapted",
+			"copilot": "Same Copilot id when offered.",
+			"validation": "static"
+		},
+		{
+			"id": "term:inherit-parent",
+			"kind": "term",
+			"status": "native",
+			"copilot": "Omit model.",
+			"validation": "static"
+		},
+		{
+			"id": "term:pstack-models.mdc",
+			"kind": "term",
+			"status": "adapted",
+			"copilot": "~/.copilot/instructions/pstack-models.instructions.md, loaded into every session.",
+			"validation": "vscode-validated",
+			"evidence": "tests/e2e/RESULTS.md arena, swarm, interrogate, poteto-mode used the role models from the repository pstack-models instruction; probe C saw the role lines in context"
+		},
+		{
+			"id": "term:.cursor/skills/",
+			"kind": "term",
+			"status": "native",
+			"copilot": ".github/skills/ and ~/.copilot/skills/.",
+			"validation": "static"
+		},
+		{
+			"id": "term:~/.cursor/plugins/",
+			"kind": "term",
+			"status": "adapted",
+			"copilot": "Locate pstack search order.",
+			"validation": "static"
+		},
+		{
+			"id": "term:.cursor/rules/",
+			"kind": "term",
+			"status": "native",
+			"copilot": ".github/instructions, copilot-instructions.md, AGENTS.md, ~/.copilot/instructions.",
+			"validation": "static"
+		},
+		{
+			"id": "term:agent-transcripts",
+			"kind": "term",
+			"status": "adapted",
+			"copilot": "~/.copilot/session-state/<id>/events.jsonl and session_store_sql.",
+			"validation": "static",
+			"limits": "Different event format from Cursor's JSONL."
+		},
+		{
+			"id": "term:Cursor-only features",
+			"kind": "term",
+			"status": "partial",
+			"copilot": "Substitutes or a one-line skip per the adapter table.",
+			"validation": "static",
+			"limits": "Bugbot, Automations routines, cloud agents have no equal."
+		},
+		{
+			"id": "term:Run another pstack skill",
+			"kind": "term",
+			"status": "adapted",
+			"copilot": "Read the sibling SKILL.md by path; the skill tool refuses slash-only skills.",
+			"validation": "vscode-validated",
+			"evidence": "tests/e2e/RESULTS.md interrogate read arena/SKILL.md by path; poteto-mode read playbooks/bug-fix.md and principle skills by path"
+		},
+		{
+			"id": "term:`/loop`",
+			"kind": "term",
+			"status": "partial",
+			"copilot": "Copilot's own /loop and /every scheduled prompts; the schedule tool when the session has one; Autopilot for long runs.",
+			"validation": "untested",
+			"limits": "In VS Code (session 71e321de) /loop scheduled the prompt every 20s and the agent saw it fire, but that session exposed no schedule tool, so the agent could not check a predicate across runs or stop the schedule; /every from a message errored. End-to-end loop not validated."
+		},
+		{
+			"id": "term:Custom Mode",
+			"kind": "term",
+			"status": "adapted",
+			"copilot": "The poteto-mode custom agent with skills preloaded.",
+			"validation": "static"
+		},
+		{
+			"id": "term:cursor-team-kit",
+			"kind": "term",
+			"status": "unsupported",
+			"copilot": "Not shipped; unslop and no-comments stand in for /deslop.",
+			"validation": "static",
+			"limits": "Other plugin, out of scope."
+		},
+		{
+			"id": "term:control-ui",
+			"kind": "term",
+			"status": "partial",
+			"copilot": "Project verify-* skill, VS Code browser tools, or Playwright.",
+			"validation": "static"
+		},
+		{
+			"id": "term:control-cli",
+			"kind": "term",
+			"status": "partial",
+			"copilot": "Project verify-* skill or a background terminal.",
+			"validation": "static"
+		},
+		{
+			"id": "term:`/deslop`",
+			"kind": "term",
+			"status": "unsupported",
+			"copilot": "Skipped with one line after unslop and no-comments.",
+			"validation": "static"
+		},
+		{
+			"id": "term:create-skill",
+			"kind": "term",
+			"status": "adapted",
+			"copilot": "The create-skill skill of this port.",
+			"validation": "static"
+		},
+		{
+			"id": "term:/visualize",
+			"kind": "term",
+			"status": "partial",
+			"copilot": "Mermaid diagrams.",
+			"validation": "static",
+			"limits": "No canvas chart unless a canvas extension is installed."
+		},
+		{
+			"id": "term:image-generation",
+			"kind": "term",
+			"status": "partial",
+			"copilot": "Image tool when the session has one, else Mermaid.",
+			"validation": "static"
+		},
+		{
+			"id": "term:Plan Mode",
+			"kind": "term",
+			"status": "native",
+			"copilot": "The Plan agent.",
+			"validation": "static"
+		},
+		{
+			"id": "term:SendToUser",
+			"kind": "term",
+			"status": "unsupported",
+			"copilot": "Skipped with one line.",
+			"validation": "static"
+		},
+		{
+			"id": "term:update_state",
+			"kind": "term",
+			"status": "unsupported",
+			"copilot": "Skipped with one line.",
+			"validation": "static"
+		},
+		{
+			"id": "term:/in-cloud",
+			"kind": "term",
+			"status": "partial",
+			"copilot": "Cloud session target for a whole session.",
+			"validation": "static"
+		},
+		{
+			"id": "term:`/autopilot`",
+			"kind": "term",
+			"status": "native",
+			"copilot": "Babysit playbook covers it, as upstream says.",
+			"validation": "static"
+		},
+		{
+			"id": "term:/add-plugin",
+			"kind": "term",
+			"status": "adapted",
+			"copilot": "pstack install, or install ~/.pstack/current as a plugin.",
+			"validation": "static"
+		},
+		{
+			"id": "term:Application Support/Cursor",
+			"kind": "term",
+			"status": "adapted",
+			"copilot": "VS Code caches and ~/.copilot/session-state.",
+			"validation": "static"
+		},
+		{
+			"id": "automation:benny",
+			"kind": "automation",
+			"status": "excluded",
+			"copilot": "Not shipped. It runs on Cursor Automations with Slack triggers.",
+			"validation": "untested",
+			"limits": "Copilot cloud Automations trigger on GitHub issues and PRs, not Slack; a port would be a new design."
+		},
+		{
+			"id": "copilot-addition:pstack-copilot",
+			"kind": "copilot-addition",
+			"status": "native",
+			"copilot": "Adapter skill, hidden from the / menu, loadable by the model and by path from every pstack skill.",
+			"validation": "vscode-validated",
+			"evidence": "tests/e2e/RESULTS.md: read by arena, swarm, interrogate, no-comments, and poteto-mode (Opus) runs"
+		},
+		{
+			"id": "copilot-addition:create-skill",
+			"kind": "copilot-addition",
+			"status": "native",
+			"copilot": "Slash skill replacing Cursor's built-in create-skill.",
+			"validation": "static"
+		},
+		{
+			"id": "copilot-addition:poteto-mode-agent",
+			"kind": "copilot-addition",
+			"status": "adapted",
+			"copilot": "Custom agent that preloads poteto-mode every turn (Custom Mode).",
+			"validation": "static"
+		},
+		{
+			"id": "copilot-addition:pstack-instructions",
+			"kind": "copilot-addition",
+			"status": "native",
+			"copilot": "Personal instruction that tells every session where pstack lives and to read the adapter.",
+			"validation": "vscode-validated",
+			"evidence": "tests/e2e/RESULTS.md probe C: the symlinked instruction was in context"
+		}
+	]
+}
