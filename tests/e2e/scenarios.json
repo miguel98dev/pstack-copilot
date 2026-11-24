@@ -1,0 +1,99 @@
+{
+	"note": "VS Code validation scenarios. Generate the repositories with `node tests/e2e/fixtures.ts /tmp/pstack-e2e`, start a new Copilot chat in each repository, send the prompt, then check each expectation against the session transcript (tool calls) and the repository (git log, git diff, files). Record the outcome in RESULTS.md.",
+	"scenarios": [
+		{
+			"id": "tdd",
+			"workspace": "tdd",
+			"prompt": "/tdd slugify('Hello  World') returns 'hello--world' but should return 'hello-world': repeated spaces should become one hyphen. Fix it.",
+			"expect": [
+				"Adds a focused regression test before changing src/slug.js",
+				"Runs the new test and shows it failing for the intended reason before the fix",
+				"Makes the smallest fix, then reruns and shows the test passing",
+				"Reports failing-before and passing-after evidence"
+			]
+		},
+		{
+			"id": "architect",
+			"workspace": "architect",
+			"prompt": "/architect add client-side rate limiting to src/client.js: at most 5 requests in flight, the rest queued, and a caller can cancel a queued request. Settle the shape only; do not write the implementation.",
+			"expect": [
+				"Reads the Copilot adapter skill by path",
+				"Traces the callers (src/users.js, src/orders.js) before sketching",
+				"Sketches two different shapes (types, signatures, module boundaries)",
+				"Picks one by single owner of state, one way to do each task, least caller knowledge",
+				"Writes no implementation"
+			]
+		},
+		{
+			"id": "arena",
+			"workspace": "arena",
+			"prompt": "/arena write parseDuration(text) in src/duration.js. It parses '1h30m', '45s', '2d', and '500ms' into milliseconds and throws a TypeError on anything else. Add node:test tests in test/duration.test.js.",
+			"expect": [
+				"Opens a todo list with the six arena phases",
+				"Reads arena runners from the repository pstack-models instruction",
+				"Spawns three task subagents in one message, mode background, each with its own model and output location",
+				"Spawns one read-only judge whose vendor differs from the parent's",
+				"Picks a base by rubric, grafts, verifies by running the tests",
+				"Writes a synthesis note naming base, judge verdict, grafts"
+			]
+		},
+		{
+			"id": "swarm",
+			"workspace": "swarm",
+			"prompt": "/swarm run each package's check.sh under packages/, one worker per package, and give me one report. Done when every package has a PASS, ISSUES, or BLOCKED result with the command output as evidence.",
+			"expect": [
+				"Opens a todo list with Frame, Fan out, Aggregate, Report",
+				"Spawns three general-purpose task subagents in one message, mode background, with the swarm workers model",
+				"Maps environment cloud to local work and says so",
+				"Reports alpha PASS, beta ISSUES (no version), gamma PASS in one table with evidence"
+			]
+		},
+		{
+			"id": "interrogate",
+			"workspace": "interrogate",
+			"prompt": "/interrogate review this branch.",
+			"expect": [
+				"Scopes the branch diff against main and restates the intent from the commit message",
+				"Spawns three adversaries with the interrogate reviewers models in separate worktrees",
+				"Keeps only findings proven by a rerun command",
+				"Finds that totalPages drops the last partial page (10 items, size 3 gives 3, intent requires 4)",
+				"Does not apply fixes"
+			]
+		},
+		{
+			"id": "poteto-mode",
+			"workspace": "poteto-mode",
+			"prompt": "/poteto-mode median() in src/stats.js returns the wrong value: median([10, 2, 9]) gives 2, but the answer is 9. repro first, then fix and verify.",
+			"expect": [
+				"Restates the goal and the smallest change",
+				"Matches the Bug fix playbook and copies its steps into the todo list",
+				"Reproduces the bug with a command before fixing",
+				"Delegates the fix to a poteto-agent subagent with the bug-fix model and this skill's absolute path",
+				"Verifies on the same check and lands the failing test before the fix in git history",
+				"Handles Opening a PR without gh or a remote with a one-line skip instead of stopping",
+				"Names the principles that shaped decisions"
+			]
+		},
+		{
+			"id": "no-comments",
+			"workspace": "no-comments",
+			"prompt": "/no-comments",
+			"expect": [
+				"Spawns the comment-sicko custom agent with task",
+				"Deletes narration, banner, commented-out code, and the unproven IMPORTANT comment",
+				"Fixes accepted MUST KILL flags without widening scope",
+				"Reports deletion count, fixes, and open items"
+			]
+		},
+		{
+			"id": "loop",
+			"workspace": "loop",
+			"prompt": "/loop until ready.txt in this folder contains DONE. Check every 20 seconds, max 10 iterations. Do not create or edit ready.txt yourself; a background job writes it.",
+			"setup": "Before sending, start `sleep 75 && echo DONE > ready.txt` in the repository in the background.",
+			"expect": [
+				"Copilot's built-in /loop schedules the prompt",
+				"Each run checks ready.txt and the schedule stops once it contains DONE"
+			]
+		}
+	]
+}
