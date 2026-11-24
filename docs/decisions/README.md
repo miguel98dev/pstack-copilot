@@ -27,3 +27,15 @@ Copying 547 files into `~/.copilot` per update would make rollback a second copy
 ## 7. A Copilot-only instruction asking for procedure, and an Opus-class parent for poteto-mode
 
 In the first VS Code run of `/poteto-mode` on Claude Sonnet 5.5, the agent fixed the bug but skipped the adapter, the playbook, the todo list, and the delegation. pstack-core cannot change, and the agent ignored the adapter line, so revision 2 added a rule to the always-applied `pstack.instructions.md`: a slash-invoked pstack skill is a procedure to follow in order, including the files it names. A second Sonnet run still skipped the playbook. A run on Claude Opus 5.5, pstack's own default model, followed every step. The instruction stays because it is cheap and states upstream's intent. The supported setup is an Opus-class parent for `/poteto-mode`. [tests/e2e/RESULTS.md](../tests/e2e/RESULTS.md) records the three runs.
+
+## 8. The sync migrates mapping data and never custom Copilot work
+
+A sync has to leave the repository valid or say exactly why not. The parts of the adaptation that follow mechanically from upstream (a new item's entry, a renamed id, a deleted rule, the supported version) are data, so the sync edits them. The parts that need judgment (the adapter skill's rows, the overlays, the model defaults, the docs) are custom Copilot work, and the code refuses to write them. What the sync cannot decide it lists, fails the checks, and opens a draft pull request. New items start `pending`, not `adapted`, so an unreviewed adaptation never reads as a finished one.
+
+## 9. Rollback is a git revert, not a second copy
+
+Keeping a backup of the core beside the core would duplicate 8 MB per sync and could disagree with git. A sync arrives as one commit, so a revert restores the core, lock, mappings, and matrix together, and git itself detects a collision with later Copilot work. The rollback finds that commit by the lock's transition between two upstream commits, because the same upstream state can be locked more than once. A real run against `cursor/plugins` showed that matching the commit id alone picks the wrong commit.
+
+## 10. Nothing merges automatically
+
+The workflows request no review or merge permission and the code has no merge call. A test scans both. A person reads the report and merges.

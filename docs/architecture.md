@@ -34,13 +34,18 @@ The platform adapter's spec. It names supported core versions and a revision, pa
 
 One entry per shipped file: path, origin (`core`, `overlay`, `generated`), source path and sha256, output sha256 and mode, and the ordered transforms with what each needs to be undone (link rewrites, insertion offsets, agent frontmatter changes). It also records the core commit and the install layout, so every stored version describes itself.
 
+### `docs/sync/history.json`
+
+An append-only list of synchronizations and rollbacks: upstream commit, tree, and version before and after, file counts, adapter revision, conflicts, migration steps, failed checks, and the report path. It lives outside `pstack-core/` because it also records adapter changes. Reports sit next to it in `docs/sync/reports/`, as Markdown and JSON.
+
 ### `~/.pstack/state.json`
 
 Active version, version history for rollback, and the exact symlinks pstack created. Uninstall and update touch only those.
 
 ## Flows
 
-- **Sync.** Fetch a sparse, shallow checkout at a ref. Compute the lock. Diff it against the current lock. Copy to a staging folder and verify the copy. Gate it: build and validate the adapter against the staged core in a scratch folder. If anything fails, discard the staging folder and report. Otherwise swap it in, write the lock, and prepend the changelog.
+- **Sync.** Fetch a sparse, shallow checkout at a ref, with enough history to list the commits since the lock. Compute the lock and diff it against the current one, detecting renames. Analyze the impact on the adaptation and detect conflicts. Plan the migration of the mapping files, then build and validate the migrated adapter against the staged core in a scratch folder. If a conflict or a check stops it, nothing is written. Otherwise one transaction swaps in the core and writes the lock, the migrated mappings, the matrix, the history, and the report, and restores every file if a step fails. `upstream run` then puts the result on a branch and opens a pull request. See [upstream-sync.md](upstream-sync.md).
+- **Rollback.** Revert the commit a sync arrived in, found by its lock transition. A revert that collides with later changes stops. The history marks the sync as rolled back.
 - **Build.** Walk the core and map each path (relocate, exclude, agent). Rewrite links, classify each skill folder with the vocabulary, inject the adapter line, add frontmatter, and render agents. Copy overlays, generate `plugin.json` and the matrix, then write the manifest. Same inputs, same bytes.
 - **Install (user).** Build and validate. Store the version under `~/.pstack/versions/` (immutable). Swap `current` atomically, then sync the symlinks in `~/.copilot` to the version's layout.
 - **Update.** Sync with the gate, then install. A blocked sync installs nothing.

@@ -24,6 +24,13 @@ What does not work, or works with a loss, and why. The per-feature status is in 
 - **Images and video.** `/visualize` and image generation become Mermaid unless the session has an image tool. `/ketchup-video` needs a local renderer, and VS Code chat may show a link instead of a player.
 - **Plugin installs.** The build is a valid Agent Plugins 1.0 package, and VS Code (Install Plugin from Source) and Copilot CLI (`--plugin-dir`) can load it. This port validated the user-scope install through `~/.copilot` links only. A plugin install prefixes commands with `pstack:`, which the adapter covers.
 
+## Synchronization
+
+- **The sync workflows have not run on GitHub.** `gh` is not installed here, so pull requests and issues were exercised against a fake `gh` and real git, and the workflow files were checked as YAML and by invariant tests. The first hosted run may need the repository settings in [upstream-sync.md](upstream-sync.md).
+- **A pull request opened with the default token does not start `ci.yml`.** Add the `PSTACK_SYNC_TOKEN` secret, or rely on the checks the sync job runs and reports itself.
+- **Impact analysis is textual,** and a new item gets a `pending` entry, not an adaptation. Review and manual work remain for a person. See the limits in [upstream-sync.md](upstream-sync.md).
+- **Only the newest sync can be rolled back,** and a rollback that collides with later Copilot changes stops.
+
 ## Not validated on this machine
 
 - **babysit, shipping, opening-a-pr, and watch-pr against a real PR.** `gh` is not installed. watch-pr's own unit tests pass on the build.

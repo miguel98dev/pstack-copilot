@@ -12,7 +12,7 @@ The port never edits pstack. It keeps an exact copy, builds a Copilot distributi
 | [`pstack-copilot/`](pstack-copilot/) | The Copilot adaptation as data: the adapter spec, mapping tables, and the files Copilot needs that upstream does not have (the adapter skill, `/create-skill`, the poteto-mode agent, one instruction). | Copy and edit a core file. |
 | [`pstack-manager/`](pstack-manager/) | The only code: upstream sync, build, validation, install, update, rollback, doctor. | Ship pstack content of its own. |
 | [`tests/`](tests/) | Manager unit and end-to-end tests on a synthetic upstream, invariant tests on the real core, and the VS Code validation scenarios. | |
-| [`docs/`](docs/) | Architecture, limitations, adding a platform, decisions. | |
+| [`docs/`](docs/) | Architecture, upstream synchronization, limitations, adding a platform, decisions, and the sync history and reports in `docs/sync/`. | |
 
 The interfaces between them are files: `pstack-core/UPSTREAM.lock.json`, `pstack-<platform>/adapter.json` with its `mappings/`, and the build's `dist-manifest.json`. [docs/architecture.md](docs/architecture.md) describes each one.
 
@@ -43,7 +43,11 @@ pstack status          # active version, links, model file
 pstack versions
 ```
 
-`update` stops before installing anything when upstream added a skill, playbook, agent, script, or Cursor term that the adapter does not map yet. Your installed version stays as it was, and the command lists what needs mapping.
+`update` syncs upstream into your checkout, which also edits the mapping files, so review `git diff` afterwards. It stops before installing anything when a conflict or a failing check remains, for example a new Cursor name that the adapter skill has no row for. Your installed version stays as it was, and the command lists what is missing.
+
+### Automatic synchronization
+
+A GitHub Actions job (`.github/workflows/upstream-sync.yml`) checks `cursor/plugins` every day and on demand. When pstack changed, it opens a pull request with the exact new copy, the Copilot migration it could prepare, the results of the compatibility checks, and a report. The pull request is a draft when adapter work is left. A conflict opens an issue instead. Nothing is ever merged automatically, and the sync never edits custom Copilot files. `pstack upstream rollback` reverts a sync. [docs/upstream-sync.md](docs/upstream-sync.md) has the details, the conflict rules, and the limits.
 
 ## How the adaptation works
 
