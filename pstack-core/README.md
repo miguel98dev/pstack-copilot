@@ -20,9 +20,10 @@ An exact, unmodified copy of [pstack](https://github.com/cursor/plugins/tree/mai
 ## Update
 
 ```sh
-pstack upstream check                  # what would change, without writing
-pstack upstream sync                   # fetch main, gate it through every adapter, replace upstream/ and the lock
+pstack upstream check                  # analyze what would change; writes nothing
+pstack upstream sync                   # fetch, analyze, migrate the adapter, validate, then replace upstream/ and the lock
 pstack upstream sync --ref <commit>    # pin a specific upstream commit
+pstack upstream rollback               # revert the newest sync with git
 ```
 
-The sync fetches a sparse, shallow copy of `cursor/plugins` at the ref, records its commit and tree hash, and checks the staged copy against every adapter. If an adapter does not yet map a new skill, playbook, agent, script, or Cursor term, the sync stops and lists what is missing, and this folder stays as it was. `--force` writes the new core anyway, for a maintainer who will fix the adapter next. [`CHANGELOG.upstream.md`](CHANGELOG.upstream.md) records each sync.
+A GitHub Actions job runs the check every day and opens a pull request when pstack changed. [docs/upstream-sync.md](../docs/upstream-sync.md) describes the whole flow. The sync replaces this folder together with the lock, the mapping files, and the history in one transaction, and it refuses to start when this folder differs from the lock, so a local edit is never overwritten. `docs/sync/history.json` records every sync, and [`CHANGELOG.upstream.md`](CHANGELOG.upstream.md) holds a short entry for each.

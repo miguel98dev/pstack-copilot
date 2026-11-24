@@ -1,23 +1,59 @@
 {
 	"id": "copilot",
 	"displayName": "GitHub Copilot (Copilot harness in VS Code, GitHub Copilot app, Copilot CLI)",
-	"revision": 3,
-	"coreVersions": ["0.15.48"],
+	"revision": 4,
+	"coreVersions": [
+		"0.15.48"
+	],
 	"plugin": {
 		"name": "pstack",
 		"descriptionSuffix": "GitHub Copilot port of pstack by Lauren Tan, built by pstack-copilot.",
-		"keywords": ["copilot", "vscode", "github-copilot"]
+		"keywords": [
+			"copilot",
+			"vscode",
+			"github-copilot"
+		]
 	},
 	"relocate": [
-		{ "from": "skills/", "to": "skills/" },
-		{ "from": "docs/", "to": "skills/pstack-copilot/upstream/docs/" },
-		{ "from": "README.md", "to": "skills/pstack-copilot/upstream/README.md" },
-		{ "from": "LICENSE", "to": "skills/pstack-copilot/upstream/LICENSE" },
-		{ "from": "assets/", "to": "assets/" }
+		{
+			"from": "skills/",
+			"to": "skills/"
+		},
+		{
+			"from": "docs/",
+			"to": "skills/pstack-copilot/upstream/docs/"
+		},
+		{
+			"from": "README.md",
+			"to": "skills/pstack-copilot/upstream/README.md"
+		},
+		{
+			"from": "LICENSE",
+			"to": "skills/pstack-copilot/upstream/LICENSE"
+		},
+		{
+			"from": "assets/",
+			"to": "assets/"
+		}
 	],
-	"copies": [{ "from": "LICENSE", "to": "LICENSE" }],
-	"exclude": ["automations/**", ".cursor-plugin/**", ".gitignore", "plugin.json"],
-	"agents": { "from": "agents/", "to": "com.github.copilot/agents/", "suffix": ".agent.md", "mapping": "mappings/agents.json" },
+	"copies": [
+		{
+			"from": "LICENSE",
+			"to": "LICENSE"
+		}
+	],
+	"exclude": [
+		"automations/**",
+		".cursor-plugin/**",
+		".gitignore",
+		"plugin.json"
+	],
+	"agents": {
+		"from": "agents/",
+		"to": "com.github.copilot/agents/",
+		"suffix": ".agent.md",
+		"mapping": "mappings/agents.json"
+	},
 	"excludedLinkBase": "https://github.com/cursor/plugins/{kind}/{commit}/pstack/",
 	"adapterSkill": "skills/pstack-copilot/SKILL.md",
 	"adapterLine": {
@@ -28,6 +64,78 @@
 	"skillFrontmatter": "mappings/skills.json",
 	"models": "mappings/models.json",
 	"features": "mappings/features.json",
+	"watch": [
+		{
+			"upstream": [
+				"docs/harness/claude-code.md"
+			],
+			"adaptation": [
+				"skills/pstack-copilot/SKILL.md"
+			],
+			"why": "The Copilot adapter skill is the Copilot counterpart of upstream's Claude Code adapter. A change to a Cursor-name mapping upstream may need the same change in the Copilot tables."
+		},
+		{
+			"upstream": [
+				"skills/setup-pstack/SKILL.md"
+			],
+			"adaptation": [
+				"pstack-copilot/mappings/models.json",
+				"skills/pstack-copilot/SKILL.md"
+			],
+			"why": "Defines the role lines, defaults, and budget rules that mappings/models.json and the adapter's setup-pstack section restate."
+		},
+		{
+			"upstream": [
+				"skills/poteto-mode/SKILL.md",
+				"skills/poteto-mode/worker.md"
+			],
+			"adaptation": [
+				"pstack-copilot/mappings/models.json",
+				"com.github.copilot/agents/poteto-mode.agent.md",
+				"com.github.copilot/rules/pstack.instructions.md"
+			],
+			"why": "Holds the Subagents rules, model defaults, and routing that the poteto-mode agent, the always-applied instruction, and the model mapping depend on."
+		},
+		{
+			"upstream": [
+				"agents/**"
+			],
+			"adaptation": [
+				"pstack-copilot/mappings/agents.json"
+			],
+			"why": "Each upstream agent's frontmatter is mapped by an agent rule."
+		},
+		{
+			"upstream": [
+				"skills/poteto-mode/playbooks/**"
+			],
+			"adaptation": [
+				"skills/pstack-copilot/SKILL.md"
+			],
+			"why": "Playbooks name the Cursor tools, /loop, control skills, and Bugbot steps that the adapter's tables map."
+		},
+		{
+			"upstream": [
+				"skills/poteto-mode/references/bugbot-triage.md"
+			],
+			"adaptation": [
+				"skills/pstack-copilot/SKILL.md"
+			],
+			"why": "The adapter's Bugbot row links to this file for triaging Copilot review comments."
+		},
+		{
+			"upstream": [
+				"skills/poteto-mode/scripts/**",
+				"skills/statechart/scripts/**",
+				"skills/show-me-your-work/scripts/**"
+			],
+			"adaptation": [
+				"pstack-copilot/mappings/features.json",
+				"docs/limitations.md"
+			],
+			"why": "Script behavior and runtime requirements are documented in the script features and the limitations."
+		}
+	],
 	"overlays": "overlays",
 	"matrix": "skills/pstack-copilot/COMPATIBILITY.md",
 	"install": {

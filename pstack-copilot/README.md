@@ -13,7 +13,7 @@ Nothing here is a copy of a pstack file. Upstream text reaches Copilot through t
 | [`mappings/models.json`](mappings/models.json) | Cursor model slugs to Copilot model ids and efforts, and the default model of each pstack role. |
 | [`mappings/agents.json`](mappings/agents.json) | How each upstream agent becomes a Copilot custom agent: which frontmatter keys it drops and which Copilot keys it sets. |
 | [`mappings/skills.json`](mappings/skills.json) | `argument-hint` values added to skills for the slash-command input. Only listed keys, only added. |
-| [`mappings/features.json`](mappings/features.json) | Traceability: one entry per upstream skill, playbook, agent, script, Cursor term, and automation, and per Copilot addition, with its support status, how it works on Copilot, and how it was validated. |
+| [`mappings/features.json`](mappings/features.json) | Traceability: one entry per upstream skill, playbook, agent, script, Cursor term, and automation, and per Copilot addition, with its support status, how it works on Copilot, and how it was validated. Status `pending` marks an item the sync found and nobody has reviewed. Validation `stale` marks a VS Code run that upstream's later change no longer backs. |
 | [`overlays/`](overlays/) | Files Copilot needs that upstream does not have. They are listed below. |
 | [`docs/COMPATIBILITY.md`](docs/COMPATIBILITY.md) | The matrix generated from `features.json` (`pstack matrix`). The build ships the same file inside the adapter skill. |
 
@@ -52,4 +52,6 @@ The set is closed. pstack-manager implements each one, records it per file, and 
 3. `pstack build && pstack validate && npm test`.
 4. When a VS Code run proves a feature, set its `validation` to `vscode-validated` with the evidence in `features.json`, then `pstack matrix`.
 
-After an upstream sync, add the new core version to `coreVersions` only once `pstack validate` passes against it.
+### Follow upstream
+
+The sync (see [docs/upstream-sync.md](../docs/upstream-sync.md)) edits only `adapter.json`, `features.json`, `agents.json`, and `skills.json`, and never overlays, `terms.json`, `models.json`, or the docs. `adapter.json` has a `watch` list that ties upstream files to the adaptations that derive from them, for example `docs/harness/claude-code.md` to the adapter skill. Add an entry whenever an overlay or mapping starts to depend on an upstream file, and a change to that file shows up in the sync report as an adaptation to review. After a sync with adapter work left, finish the Copilot side, run `pstack build && pstack validate && npm test`, then `pstack matrix`.
