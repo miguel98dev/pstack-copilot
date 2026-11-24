@@ -1,0 +1,1882 @@
+{
+	"status": "prepared",
+	"trigger": "test",
+	"from": {
+		"commit": "ca782ed8b3c2c521cead8e1720d55c3a5dbf2347",
+		"version": "0.15.48",
+		"tree": "971573532de6714a4ddff8ec39b52d021ebf161a"
+	},
+	"to": {
+		"commit": "c742dd61706fbacc1b95f1a20b7b988cf096ce6c",
+		"version": "0.15.36",
+		"tree": "4719e1c4b4c43bac85d4206a8b41dd2899769c1c"
+	},
+	"counts": {
+		"added": 24,
+		"modified": 84,
+		"deleted": 5,
+		"renamed": 0,
+		"mode-changed": 0
+	},
+	"changes": [
+		{
+			"kind": "modified",
+			"path": ".cursor-plugin/plugin.json",
+			"oldMode": "644",
+			"newMode": "644"
+		},
+		{
+			"kind": "modified",
+			"path": "README.md",
+			"oldMode": "644",
+			"newMode": "644"
+		},
+		{
+			"kind": "modified",
+			"path": "agents/comment-sicko.md",
+			"oldMode": "644",
+			"newMode": "644"
+		},
+		{
+			"kind": "modified",
+			"path": "agents/poteto-agent.md",
+			"oldMode": "644",
+			"newMode": "644"
+		},
+		{
+			"kind": "modified",
+			"path": "automations/benny/FOR_AGENTS.md",
+			"oldMode": "644",
+			"newMode": "644"
+		},
+		{
+			"kind": "modified",
+			"path": "automations/benny/skills/reproduce-and-fix-issues/SKILL.md",
+			"oldMode": "644",
+			"newMode": "644"
+		},
+		{
+			"kind": "modified",
+			"path": "automations/benny/skills/setup-benny/SKILL.md",
+			"oldMode": "644",
+			"newMode": "644"
+		},
+		{
+			"kind": "modified",
+			"path": "automations/benny/skills/triage-issue-reports/SKILL.md",
+			"oldMode": "644",
+			"newMode": "644"
+		},
+		{
+			"kind": "modified",
+			"path": "docs/guide/01-setup.md",
+			"oldMode": "644",
+			"newMode": "644"
+		},
+		{
+			"kind": "modified",
+			"path": "docs/guide/02-poteto-mode.md",
+			"oldMode": "644",
+			"newMode": "644"
+		},
+		{
+			"kind": "modified",
+			"path": "docs/guide/03-understand.md",
+			"oldMode": "644",
+			"newMode": "644"
+		},
+		{
+			"kind": "modified",
+			"path": "docs/guide/04-design.md",
+			"oldMode": "644",
+			"newMode": "644"
+		},
+		{
+			"kind": "modified",
+			"path": "docs/guide/05-build-and-clean.md",
+			"oldMode": "644",
+			"newMode": "644"
+		},
+		{
+			"kind": "modified",
+			"path": "docs/guide/06-verify-and-ship.md",
+			"oldMode": "644",
+			"newMode": "644"
+		},
+		{
+			"kind": "modified",
+			"path": "docs/guide/07-overnight.md",
+			"oldMode": "644",
+			"newMode": "644"
+		},
+		{
+			"kind": "modified",
+			"path": "docs/guide/09-make-it-yours.md",
+			"oldMode": "644",
+			"newMode": "644"
+		},
+		{
+			"kind": "modified",
+			"path": "docs/guide/10-recipes-and-pitfalls.md",
+			"oldMode": "644",
+			"newMode": "644"
+		},
+		{
+			"kind": "modified",
+			"path": "docs/harness/claude-code.md",
+			"oldMode": "644",
+			"newMode": "644"
+		},
+		{
+			"kind": "modified",
+			"path": "plugin.json",
+			"oldMode": "644",
+			"newMode": "644"
+		},
+		{
+			"kind": "modified",
+			"path": "skills/architect/SKILL.md",
+			"oldMode": "644",
+			"newMode": "644"
+		},
+		{
+			"kind": "added",
+			"path": "skills/architect/references/design-red-flags.md",
+			"newMode": "644"
+		},
+		{
+			"kind": "added",
+			"path": "skills/architect/references/rationale-template.md",
+			"newMode": "644"
+		},
+		{
+			"kind": "added",
+			"path": "skills/architect/references/runner-prompt.md",
+			"newMode": "644"
+		},
+		{
+			"kind": "modified",
+			"path": "skills/arena/SKILL.md",
+			"oldMode": "644",
+			"newMode": "644"
+		},
+		{
+			"kind": "modified",
+			"path": "skills/automate-me/SKILL.md",
+			"oldMode": "644",
+			"newMode": "644"
+		},
+		{
+			"kind": "modified",
+			"path": "skills/benchmark-checklist/SKILL.md",
+			"oldMode": "644",
+			"newMode": "644"
+		},
+		{
+			"kind": "modified",
+			"path": "skills/blast-radius/SKILL.md",
+			"oldMode": "644",
+			"newMode": "644"
+		},
+		{
+			"kind": "modified",
+			"path": "skills/figure-it-out/SKILL.md",
+			"oldMode": "644",
+			"newMode": "644"
+		},
+		{
+			"kind": "modified",
+			"path": "skills/how/SKILL.md",
+			"oldMode": "644",
+			"newMode": "644"
+		},
+		{
+			"kind": "added",
+			"path": "skills/how/references/explainer-prompt.md",
+			"newMode": "644"
+		},
+		{
+			"kind": "added",
+			"path": "skills/how/references/explorer-prompt.md",
+			"newMode": "644"
+		},
+		{
+			"kind": "modified",
+			"path": "skills/no-comments/SKILL.md",
+			"oldMode": "644",
+			"newMode": "644"
+		},
+		{
+			"kind": "modified",
+			"path": "skills/poteto-help/SKILL.md",
+			"oldMode": "644",
+			"newMode": "644"
+		},
+		{
+			"kind": "modified",
+			"path": "skills/poteto-mode/SKILL.md",
+			"oldMode": "644",
+			"newMode": "644"
+		},
+		{
+			"kind": "modified",
+			"path": "skills/poteto-mode/playbooks/autonomous-run.md",
+			"oldMode": "644",
+			"newMode": "644"
+		},
+		{
+			"kind": "modified",
+			"path": "skills/poteto-mode/playbooks/autopilot-full.md",
+			"oldMode": "644",
+			"newMode": "644"
+		},
+		{
+			"kind": "modified",
+			"path": "skills/poteto-mode/playbooks/autopilot-stack.md",
+			"oldMode": "644",
+			"newMode": "644"
+		},
+		{
+			"kind": "modified",
+			"path": "skills/poteto-mode/playbooks/babysit.md",
+			"oldMode": "644",
+			"newMode": "644"
+		},
+		{
+			"kind": "modified",
+			"path": "skills/poteto-mode/playbooks/bug-fix.md",
+			"oldMode": "644",
+			"newMode": "644"
+		},
+		{
+			"kind": "modified",
+			"path": "skills/poteto-mode/playbooks/eval.md",
+			"oldMode": "644",
+			"newMode": "644"
+		},
+		{
+			"kind": "modified",
+			"path": "skills/poteto-mode/playbooks/feature.md",
+			"oldMode": "644",
+			"newMode": "644"
+		},
+		{
+			"kind": "modified",
+			"path": "skills/poteto-mode/playbooks/hillclimb.md",
+			"oldMode": "644",
+			"newMode": "644"
+		},
+		{
+			"kind": "modified",
+			"path": "skills/poteto-mode/playbooks/investigation.md",
+			"oldMode": "644",
+			"newMode": "644"
+		},
+		{
+			"kind": "modified",
+			"path": "skills/poteto-mode/playbooks/multi-phase-plan.md",
+			"oldMode": "644",
+			"newMode": "644"
+		},
+		{
+			"kind": "modified",
+			"path": "skills/poteto-mode/playbooks/opening-a-pr.md",
+			"oldMode": "644",
+			"newMode": "644"
+		},
+		{
+			"kind": "added",
+			"path": "skills/poteto-mode/playbooks/orchestrate.md",
+			"newMode": "644"
+		},
+		{
+			"kind": "modified",
+			"path": "skills/poteto-mode/playbooks/perf-issue.md",
+			"oldMode": "644",
+			"newMode": "644"
+		},
+		{
+			"kind": "modified",
+			"path": "skills/poteto-mode/playbooks/refactoring.md",
+			"oldMode": "644",
+			"newMode": "644"
+		},
+		{
+			"kind": "modified",
+			"path": "skills/poteto-mode/playbooks/runtime-forensics.md",
+			"oldMode": "644",
+			"newMode": "644"
+		},
+		{
+			"kind": "modified",
+			"path": "skills/poteto-mode/playbooks/session-pickup.md",
+			"oldMode": "644",
+			"newMode": "644"
+		},
+		{
+			"kind": "modified",
+			"path": "skills/poteto-mode/playbooks/shipping.md",
+			"oldMode": "644",
+			"newMode": "644"
+		},
+		{
+			"kind": "modified",
+			"path": "skills/poteto-mode/playbooks/trace-forensics.md",
+			"oldMode": "644",
+			"newMode": "644"
+		},
+		{
+			"kind": "modified",
+			"path": "skills/poteto-mode/playbooks/worktree-cleanup.md",
+			"oldMode": "644",
+			"newMode": "644"
+		},
+		{
+			"kind": "added",
+			"path": "skills/poteto-mode/scripts/check-plan.mjs",
+			"newMode": "755"
+		},
+		{
+			"kind": "added",
+			"path": "skills/poteto-mode/scripts/check-plan.test.ts",
+			"newMode": "644"
+		},
+		{
+			"kind": "modified",
+			"path": "skills/poteto-mode/scripts/package.json",
+			"oldMode": "644",
+			"newMode": "644"
+		},
+		{
+			"kind": "deleted",
+			"path": "skills/poteto-mode/worker.md",
+			"oldMode": "644"
+		},
+		{
+			"kind": "modified",
+			"path": "skills/principle-attack-the-premise/SKILL.md",
+			"oldMode": "644",
+			"newMode": "644"
+		},
+		{
+			"kind": "modified",
+			"path": "skills/principle-boundary-discipline/SKILL.md",
+			"oldMode": "644",
+			"newMode": "644"
+		},
+		{
+			"kind": "modified",
+			"path": "skills/principle-build-the-lever/SKILL.md",
+			"oldMode": "644",
+			"newMode": "644"
+		},
+		{
+			"kind": "modified",
+			"path": "skills/principle-explain-the-number/SKILL.md",
+			"oldMode": "644",
+			"newMode": "644"
+		},
+		{
+			"kind": "modified",
+			"path": "skills/principle-fix-root-causes/SKILL.md",
+			"oldMode": "644",
+			"newMode": "644"
+		},
+		{
+			"kind": "modified",
+			"path": "skills/principle-foundational-thinking/SKILL.md",
+			"oldMode": "644",
+			"newMode": "644"
+		},
+		{
+			"kind": "modified",
+			"path": "skills/principle-make-operations-idempotent/SKILL.md",
+			"oldMode": "644",
+			"newMode": "644"
+		},
+		{
+			"kind": "modified",
+			"path": "skills/principle-minimize-reader-load/SKILL.md",
+			"oldMode": "644",
+			"newMode": "644"
+		},
+		{
+			"kind": "modified",
+			"path": "skills/principle-model-the-domain/SKILL.md",
+			"oldMode": "644",
+			"newMode": "644"
+		},
+		{
+			"kind": "modified",
+			"path": "skills/principle-prove-it-works/SKILL.md",
+			"oldMode": "644",
+			"newMode": "644"
+		},
+		{
+			"kind": "modified",
+			"path": "skills/principle-separate-before-serializing-shared-state/SKILL.md",
+			"oldMode": "644",
+			"newMode": "644"
+		},
+		{
+			"kind": "modified",
+			"path": "skills/principle-sequence-verifiable-units/SKILL.md",
+			"oldMode": "644",
+			"newMode": "644"
+		},
+		{
+			"kind": "modified",
+			"path": "skills/principle-test-behavior-not-implementation/SKILL.md",
+			"oldMode": "644",
+			"newMode": "644"
+		},
+		{
+			"kind": "modified",
+			"path": "skills/principle-type-system-discipline/SKILL.md",
+			"oldMode": "644",
+			"newMode": "644"
+		},
+		{
+			"kind": "modified",
+			"path": "skills/recall/SKILL.md",
+			"oldMode": "644",
+			"newMode": "644"
+		},
+		{
+			"kind": "modified",
+			"path": "skills/reflect/SKILL.md",
+			"oldMode": "644",
+			"newMode": "644"
+		},
+		{
+			"kind": "added",
+			"path": "skills/reflect/references/divergent-reviewer.md",
+			"newMode": "644"
+		},
+		{
+			"kind": "added",
+			"path": "skills/reflect/references/judgment-reviewer.md",
+			"newMode": "644"
+		},
+		{
+			"kind": "added",
+			"path": "skills/reflect/references/synthesizer.md",
+			"newMode": "644"
+		},
+		{
+			"kind": "added",
+			"path": "skills/reflect/references/tooling-reviewer.md",
+			"newMode": "644"
+		},
+		{
+			"kind": "deleted",
+			"path": "skills/reframe/SKILL.md",
+			"oldMode": "644"
+		},
+		{
+			"kind": "modified",
+			"path": "skills/setup-pstack/SKILL.md",
+			"oldMode": "644",
+			"newMode": "644"
+		},
+		{
+			"kind": "modified",
+			"path": "skills/sharpen/SKILL.md",
+			"oldMode": "644",
+			"newMode": "644"
+		},
+		{
+			"kind": "modified",
+			"path": "skills/show-me-your-work/SKILL.md",
+			"oldMode": "644",
+			"newMode": "644"
+		},
+		{
+			"kind": "modified",
+			"path": "skills/statechart/SKILL.md",
+			"oldMode": "644",
+			"newMode": "644"
+		},
+		{
+			"kind": "modified",
+			"path": "skills/statechart/scripts/backends/mermaid.ts",
+			"oldMode": "644",
+			"newMode": "644"
+		},
+		{
+			"kind": "modified",
+			"path": "skills/statechart/scripts/frontends/dot.ts",
+			"oldMode": "644",
+			"newMode": "644"
+		},
+		{
+			"kind": "deleted",
+			"path": "skills/statechart/scripts/janitor.ts",
+			"oldMode": "644"
+		},
+		{
+			"kind": "deleted",
+			"path": "skills/statechart/scripts/kill.ts",
+			"oldMode": "644"
+		},
+		{
+			"kind": "modified",
+			"path": "skills/statechart/scripts/run.ts",
+			"oldMode": "644",
+			"newMode": "644"
+		},
+		{
+			"kind": "modified",
+			"path": "skills/statechart/scripts/statechart.ts",
+			"oldMode": "644",
+			"newMode": "644"
+		},
+		{
+			"kind": "modified",
+			"path": "skills/statechart/scripts/test/chart.test.ts",
+			"oldMode": "644",
+			"newMode": "644"
+		},
+		{
+			"kind": "modified",
+			"path": "skills/statechart/scripts/test/cli.test.ts",
+			"oldMode": "644",
+			"newMode": "644"
+		},
+		{
+			"kind": "modified",
+			"path": "skills/statechart/scripts/test/corpus.test.ts",
+			"oldMode": "644",
+			"newMode": "644"
+		},
+		{
+			"kind": "modified",
+			"path": "skills/statechart/scripts/test/corpus/Login/chart.mmd",
+			"oldMode": "644",
+			"newMode": "644"
+		},
+		{
+			"kind": "deleted",
+			"path": "skills/statechart/scripts/test/drawn.ts",
+			"oldMode": "644"
+		},
+		{
+			"kind": "modified",
+			"path": "skills/statechart/scripts/test/labels.ts",
+			"oldMode": "644",
+			"newMode": "644"
+		},
+		{
+			"kind": "modified",
+			"path": "skills/statechart/scripts/test/messages.test.ts",
+			"oldMode": "644",
+			"newMode": "644"
+		},
+		{
+			"kind": "modified",
+			"path": "skills/statechart/scripts/test/render.test.ts",
+			"oldMode": "644",
+			"newMode": "644"
+		},
+		{
+			"kind": "modified",
+			"path": "skills/swarm/SKILL.md",
+			"oldMode": "644",
+			"newMode": "644"
+		},
+		{
+			"kind": "modified",
+			"path": "skills/teach/SKILL.md",
+			"oldMode": "644",
+			"newMode": "644"
+		},
+		{
+			"kind": "modified",
+			"path": "skills/technical-writing/SKILL.md",
+			"oldMode": "644",
+			"newMode": "644"
+		},
+		{
+			"kind": "modified",
+			"path": "skills/unslop/SKILL.md",
+			"oldMode": "644",
+			"newMode": "644"
+		},
+		{
+			"kind": "modified",
+			"path": "skills/why/SKILL.md",
+			"oldMode": "644",
+			"newMode": "644"
+		},
+		{
+			"kind": "added",
+			"path": "skills/why/references/epistemics.md",
+			"newMode": "644"
+		},
+		{
+			"kind": "added",
+			"path": "skills/why/references/investigator-prompt.md",
+			"newMode": "644"
+		},
+		{
+			"kind": "added",
+			"path": "skills/why/references/source-playbook.md",
+			"newMode": "644"
+		},
+		{
+			"kind": "added",
+			"path": "skills/why/references/sources/code-archaeology.md",
+			"newMode": "644"
+		},
+		{
+			"kind": "added",
+			"path": "skills/why/references/sources/databricks.md",
+			"newMode": "644"
+		},
+		{
+			"kind": "added",
+			"path": "skills/why/references/sources/datadog.md",
+			"newMode": "644"
+		},
+		{
+			"kind": "added",
+			"path": "skills/why/references/sources/incident-postmortem.md",
+			"newMode": "644"
+		},
+		{
+			"kind": "added",
+			"path": "skills/why/references/sources/linear.md",
+			"newMode": "644"
+		},
+		{
+			"kind": "added",
+			"path": "skills/why/references/sources/notion.md",
+			"newMode": "644"
+		},
+		{
+			"kind": "added",
+			"path": "skills/why/references/sources/sentry.md",
+			"newMode": "644"
+		},
+		{
+			"kind": "added",
+			"path": "skills/why/references/sources/slack.md",
+			"newMode": "644"
+		},
+		{
+			"kind": "added",
+			"path": "skills/why/references/synthesizer-prompt.md",
+			"newMode": "644"
+		}
+	],
+	"items": [
+		{
+			"kind": "agent",
+			"name": "comment-sicko",
+			"change": "modified",
+			"files": [
+				"agents/comment-sicko.md"
+			]
+		},
+		{
+			"kind": "agent",
+			"name": "poteto-agent",
+			"change": "modified",
+			"files": [
+				"agents/poteto-agent.md"
+			]
+		},
+		{
+			"kind": "automation",
+			"name": "benny",
+			"change": "modified",
+			"files": [
+				"automations/benny/FOR_AGENTS.md",
+				"automations/benny/skills/reproduce-and-fix-issues/SKILL.md",
+				"automations/benny/skills/setup-benny/SKILL.md",
+				"automations/benny/skills/triage-issue-reports/SKILL.md"
+			]
+		},
+		{
+			"kind": "playbook",
+			"name": "autonomous-run",
+			"change": "modified",
+			"files": [
+				"skills/poteto-mode/playbooks/autonomous-run.md"
+			]
+		},
+		{
+			"kind": "playbook",
+			"name": "autopilot-full",
+			"change": "modified",
+			"files": [
+				"skills/poteto-mode/playbooks/autopilot-full.md"
+			]
+		},
+		{
+			"kind": "playbook",
+			"name": "autopilot-stack",
+			"change": "modified",
+			"files": [
+				"skills/poteto-mode/playbooks/autopilot-stack.md"
+			]
+		},
+		{
+			"kind": "playbook",
+			"name": "babysit",
+			"change": "modified",
+			"files": [
+				"skills/poteto-mode/playbooks/babysit.md"
+			]
+		},
+		{
+			"kind": "playbook",
+			"name": "bug-fix",
+			"change": "modified",
+			"files": [
+				"skills/poteto-mode/playbooks/bug-fix.md"
+			]
+		},
+		{
+			"kind": "playbook",
+			"name": "eval",
+			"change": "modified",
+			"files": [
+				"skills/poteto-mode/playbooks/eval.md"
+			]
+		},
+		{
+			"kind": "playbook",
+			"name": "feature",
+			"change": "modified",
+			"files": [
+				"skills/poteto-mode/playbooks/feature.md"
+			]
+		},
+		{
+			"kind": "playbook",
+			"name": "hillclimb",
+			"change": "modified",
+			"files": [
+				"skills/poteto-mode/playbooks/hillclimb.md"
+			]
+		},
+		{
+			"kind": "playbook",
+			"name": "investigation",
+			"change": "modified",
+			"files": [
+				"skills/poteto-mode/playbooks/investigation.md"
+			]
+		},
+		{
+			"kind": "playbook",
+			"name": "multi-phase-plan",
+			"change": "modified",
+			"files": [
+				"skills/poteto-mode/playbooks/multi-phase-plan.md"
+			]
+		},
+		{
+			"kind": "playbook",
+			"name": "opening-a-pr",
+			"change": "modified",
+			"files": [
+				"skills/poteto-mode/playbooks/opening-a-pr.md"
+			]
+		},
+		{
+			"kind": "playbook",
+			"name": "orchestrate",
+			"change": "added",
+			"files": [
+				"skills/poteto-mode/playbooks/orchestrate.md"
+			]
+		},
+		{
+			"kind": "playbook",
+			"name": "perf-issue",
+			"change": "modified",
+			"files": [
+				"skills/poteto-mode/playbooks/perf-issue.md"
+			]
+		},
+		{
+			"kind": "playbook",
+			"name": "refactoring",
+			"change": "modified",
+			"files": [
+				"skills/poteto-mode/playbooks/refactoring.md"
+			]
+		},
+		{
+			"kind": "playbook",
+			"name": "runtime-forensics",
+			"change": "modified",
+			"files": [
+				"skills/poteto-mode/playbooks/runtime-forensics.md"
+			]
+		},
+		{
+			"kind": "playbook",
+			"name": "session-pickup",
+			"change": "modified",
+			"files": [
+				"skills/poteto-mode/playbooks/session-pickup.md"
+			]
+		},
+		{
+			"kind": "playbook",
+			"name": "shipping",
+			"change": "modified",
+			"files": [
+				"skills/poteto-mode/playbooks/shipping.md"
+			]
+		},
+		{
+			"kind": "playbook",
+			"name": "trace-forensics",
+			"change": "modified",
+			"files": [
+				"skills/poteto-mode/playbooks/trace-forensics.md"
+			]
+		},
+		{
+			"kind": "playbook",
+			"name": "worktree-cleanup",
+			"change": "modified",
+			"files": [
+				"skills/poteto-mode/playbooks/worktree-cleanup.md"
+			]
+		},
+		{
+			"kind": "script",
+			"name": "skills/poteto-mode/scripts/check-plan.mjs",
+			"change": "added",
+			"files": [
+				"skills/poteto-mode/scripts/check-plan.mjs"
+			]
+		},
+		{
+			"kind": "skill",
+			"name": "architect",
+			"change": "modified",
+			"files": [
+				"skills/architect/SKILL.md",
+				"skills/architect/references/design-red-flags.md",
+				"skills/architect/references/rationale-template.md",
+				"skills/architect/references/runner-prompt.md"
+			]
+		},
+		{
+			"kind": "skill",
+			"name": "arena",
+			"change": "modified",
+			"files": [
+				"skills/arena/SKILL.md"
+			]
+		},
+		{
+			"kind": "skill",
+			"name": "automate-me",
+			"change": "modified",
+			"files": [
+				"skills/automate-me/SKILL.md"
+			]
+		},
+		{
+			"kind": "skill",
+			"name": "benchmark-checklist",
+			"change": "modified",
+			"files": [
+				"skills/benchmark-checklist/SKILL.md"
+			]
+		},
+		{
+			"kind": "skill",
+			"name": "blast-radius",
+			"change": "modified",
+			"files": [
+				"skills/blast-radius/SKILL.md"
+			]
+		},
+		{
+			"kind": "skill",
+			"name": "figure-it-out",
+			"change": "modified",
+			"files": [
+				"skills/figure-it-out/SKILL.md"
+			]
+		},
+		{
+			"kind": "skill",
+			"name": "how",
+			"change": "modified",
+			"files": [
+				"skills/how/SKILL.md",
+				"skills/how/references/explainer-prompt.md",
+				"skills/how/references/explorer-prompt.md"
+			]
+		},
+		{
+			"kind": "skill",
+			"name": "no-comments",
+			"change": "modified",
+			"files": [
+				"skills/no-comments/SKILL.md"
+			]
+		},
+		{
+			"kind": "skill",
+			"name": "poteto-help",
+			"change": "modified",
+			"files": [
+				"skills/poteto-help/SKILL.md"
+			]
+		},
+		{
+			"kind": "skill",
+			"name": "poteto-mode",
+			"change": "modified",
+			"files": [
+				"skills/poteto-mode/SKILL.md",
+				"skills/poteto-mode/scripts/check-plan.mjs",
+				"skills/poteto-mode/scripts/check-plan.test.ts",
+				"skills/poteto-mode/scripts/package.json",
+				"skills/poteto-mode/worker.md"
+			]
+		},
+		{
+			"kind": "skill",
+			"name": "principle-attack-the-premise",
+			"change": "modified",
+			"files": [
+				"skills/principle-attack-the-premise/SKILL.md"
+			]
+		},
+		{
+			"kind": "skill",
+			"name": "principle-boundary-discipline",
+			"change": "modified",
+			"files": [
+				"skills/principle-boundary-discipline/SKILL.md"
+			]
+		},
+		{
+			"kind": "skill",
+			"name": "principle-build-the-lever",
+			"change": "modified",
+			"files": [
+				"skills/principle-build-the-lever/SKILL.md"
+			]
+		},
+		{
+			"kind": "skill",
+			"name": "principle-explain-the-number",
+			"change": "modified",
+			"files": [
+				"skills/principle-explain-the-number/SKILL.md"
+			]
+		},
+		{
+			"kind": "skill",
+			"name": "principle-fix-root-causes",
+			"change": "modified",
+			"files": [
+				"skills/principle-fix-root-causes/SKILL.md"
+			]
+		},
+		{
+			"kind": "skill",
+			"name": "principle-foundational-thinking",
+			"change": "modified",
+			"files": [
+				"skills/principle-foundational-thinking/SKILL.md"
+			]
+		},
+		{
+			"kind": "skill",
+			"name": "principle-make-operations-idempotent",
+			"change": "modified",
+			"files": [
+				"skills/principle-make-operations-idempotent/SKILL.md"
+			]
+		},
+		{
+			"kind": "skill",
+			"name": "principle-minimize-reader-load",
+			"change": "modified",
+			"files": [
+				"skills/principle-minimize-reader-load/SKILL.md"
+			]
+		},
+		{
+			"kind": "skill",
+			"name": "principle-model-the-domain",
+			"change": "modified",
+			"files": [
+				"skills/principle-model-the-domain/SKILL.md"
+			]
+		},
+		{
+			"kind": "skill",
+			"name": "principle-prove-it-works",
+			"change": "modified",
+			"files": [
+				"skills/principle-prove-it-works/SKILL.md"
+			]
+		},
+		{
+			"kind": "skill",
+			"name": "principle-separate-before-serializing-shared-state",
+			"change": "modified",
+			"files": [
+				"skills/principle-separate-before-serializing-shared-state/SKILL.md"
+			]
+		},
+		{
+			"kind": "skill",
+			"name": "principle-sequence-verifiable-units",
+			"change": "modified",
+			"files": [
+				"skills/principle-sequence-verifiable-units/SKILL.md"
+			]
+		},
+		{
+			"kind": "skill",
+			"name": "principle-test-behavior-not-implementation",
+			"change": "modified",
+			"files": [
+				"skills/principle-test-behavior-not-implementation/SKILL.md"
+			]
+		},
+		{
+			"kind": "skill",
+			"name": "principle-type-system-discipline",
+			"change": "modified",
+			"files": [
+				"skills/principle-type-system-discipline/SKILL.md"
+			]
+		},
+		{
+			"kind": "skill",
+			"name": "recall",
+			"change": "modified",
+			"files": [
+				"skills/recall/SKILL.md"
+			]
+		},
+		{
+			"kind": "skill",
+			"name": "reflect",
+			"change": "modified",
+			"files": [
+				"skills/reflect/SKILL.md",
+				"skills/reflect/references/divergent-reviewer.md",
+				"skills/reflect/references/judgment-reviewer.md",
+				"skills/reflect/references/synthesizer.md",
+				"skills/reflect/references/tooling-reviewer.md"
+			]
+		},
+		{
+			"kind": "skill",
+			"name": "reframe",
+			"change": "removed",
+			"files": [
+				"skills/reframe/SKILL.md"
+			]
+		},
+		{
+			"kind": "skill",
+			"name": "setup-pstack",
+			"change": "modified",
+			"files": [
+				"skills/setup-pstack/SKILL.md"
+			]
+		},
+		{
+			"kind": "skill",
+			"name": "sharpen",
+			"change": "modified",
+			"files": [
+				"skills/sharpen/SKILL.md"
+			]
+		},
+		{
+			"kind": "skill",
+			"name": "show-me-your-work",
+			"change": "modified",
+			"files": [
+				"skills/show-me-your-work/SKILL.md"
+			]
+		},
+		{
+			"kind": "skill",
+			"name": "statechart",
+			"change": "modified",
+			"files": [
+				"skills/statechart/SKILL.md",
+				"skills/statechart/scripts/backends/mermaid.ts",
+				"skills/statechart/scripts/frontends/dot.ts",
+				"skills/statechart/scripts/janitor.ts",
+				"skills/statechart/scripts/kill.ts",
+				"skills/statechart/scripts/run.ts",
+				"skills/statechart/scripts/statechart.ts",
+				"skills/statechart/scripts/test/chart.test.ts",
+				"skills/statechart/scripts/test/cli.test.ts",
+				"skills/statechart/scripts/test/corpus.test.ts",
+				"skills/statechart/scripts/test/corpus/Login/chart.mmd",
+				"skills/statechart/scripts/test/drawn.ts",
+				"skills/statechart/scripts/test/labels.ts",
+				"skills/statechart/scripts/test/messages.test.ts",
+				"skills/statechart/scripts/test/render.test.ts"
+			]
+		},
+		{
+			"kind": "skill",
+			"name": "swarm",
+			"change": "modified",
+			"files": [
+				"skills/swarm/SKILL.md"
+			]
+		},
+		{
+			"kind": "skill",
+			"name": "teach",
+			"change": "modified",
+			"files": [
+				"skills/teach/SKILL.md"
+			]
+		},
+		{
+			"kind": "skill",
+			"name": "technical-writing",
+			"change": "modified",
+			"files": [
+				"skills/technical-writing/SKILL.md"
+			]
+		},
+		{
+			"kind": "skill",
+			"name": "unslop",
+			"change": "modified",
+			"files": [
+				"skills/unslop/SKILL.md"
+			]
+		},
+		{
+			"kind": "skill",
+			"name": "why",
+			"change": "modified",
+			"files": [
+				"skills/why/SKILL.md",
+				"skills/why/references/epistemics.md",
+				"skills/why/references/investigator-prompt.md",
+				"skills/why/references/source-playbook.md",
+				"skills/why/references/sources/code-archaeology.md",
+				"skills/why/references/sources/databricks.md",
+				"skills/why/references/sources/datadog.md",
+				"skills/why/references/sources/incident-postmortem.md",
+				"skills/why/references/sources/linear.md",
+				"skills/why/references/sources/notion.md",
+				"skills/why/references/sources/sentry.md",
+				"skills/why/references/sources/slack.md",
+				"skills/why/references/synthesizer-prompt.md"
+			]
+		}
+	],
+	"vocabulary": {
+		"added": [],
+		"removed": [],
+		"modified": []
+	},
+	"impact": {
+		"affected": [
+			{
+				"action": "automatic",
+				"adaptation": "adapter line on skill:principle-prove-it-works",
+				"because": "The unit now uses a Cursor name, so the build adds the adapter line.",
+				"upstream": []
+			},
+			{
+				"action": "automatic",
+				"adaptation": "adapter line on skill:why",
+				"because": "The unit now uses a Cursor name, so the build adds the adapter line.",
+				"upstream": []
+			},
+			{
+				"action": "automatic",
+				"adaptation": "adapter line on skill:principle-type-system-discipline",
+				"because": "The unit no longer uses a Cursor name, so the build stops adding the adapter line.",
+				"upstream": []
+			},
+			{
+				"action": "migrated",
+				"adaptation": "features.json agent:comment-sicko",
+				"because": "Upstream changed agent comment-sicko, which a VS Code run validated. The sync marks the validation stale.",
+				"upstream": [
+					"agents/comment-sicko.md"
+				]
+			},
+			{
+				"action": "review",
+				"adaptation": "agents.json comment-sicko",
+				"because": "Upstream agent changed; its body and kept frontmatter are copied again, and its mapping rule is unchanged.",
+				"upstream": [
+					"agents/comment-sicko.md"
+				]
+			},
+			{
+				"action": "migrated",
+				"adaptation": "features.json agent:poteto-agent",
+				"because": "Upstream changed agent poteto-agent, which a VS Code run validated. The sync marks the validation stale.",
+				"upstream": [
+					"agents/poteto-agent.md"
+				]
+			},
+			{
+				"action": "review",
+				"adaptation": "agents.json poteto-agent",
+				"because": "Upstream agent changed; its body and kept frontmatter are copied again, and its mapping rule is unchanged.",
+				"upstream": [
+					"agents/poteto-agent.md"
+				]
+			},
+			{
+				"action": "review",
+				"adaptation": "features.json playbook:autonomous-run",
+				"because": "Upstream changed playbook autonomous-run, which has a Copilot adaptation (adapted). Check that \"Copilot's /loop or /every plus Autopilot.\" still holds.",
+				"upstream": [
+					"skills/poteto-mode/playbooks/autonomous-run.md"
+				]
+			},
+			{
+				"action": "review",
+				"adaptation": "features.json playbook:autopilot-full",
+				"because": "Upstream changed playbook autopilot-full, which has a Copilot adaptation (partial). Check that \"Owners run as local background subagents; /loop 1h becomes /every 1h or an Autom\" still holds.",
+				"upstream": [
+					"skills/poteto-mode/playbooks/autopilot-full.md"
+				]
+			},
+			{
+				"action": "review",
+				"adaptation": "features.json playbook:autopilot-stack",
+				"because": "Upstream changed playbook autopilot-stack, which has a Copilot adaptation (partial). Check that \"Same as autopilot-full without the merge.\" still holds.",
+				"upstream": [
+					"skills/poteto-mode/playbooks/autopilot-stack.md"
+				]
+			},
+			{
+				"action": "review",
+				"adaptation": "features.json playbook:babysit",
+				"because": "Upstream changed playbook babysit, which has a Copilot adaptation (adapted). Check that \"gh plus watch-pr (Bun); Copilot review comments triaged as Bugbot threads.\" still holds.",
+				"upstream": [
+					"skills/poteto-mode/playbooks/babysit.md"
+				]
+			},
+			{
+				"action": "migrated",
+				"adaptation": "features.json playbook:bug-fix",
+				"because": "Upstream changed playbook bug-fix, which a VS Code run validated. The sync marks the validation stale.",
+				"upstream": [
+					"skills/poteto-mode/playbooks/bug-fix.md"
+				]
+			},
+			{
+				"action": "review",
+				"adaptation": "features.json playbook:eval",
+				"because": "Upstream changed playbook eval, which has a Copilot adaptation (adapted). Check that \"Candidate transcripts read from ~/.copilot/session-state.\" still holds.",
+				"upstream": [
+					"skills/poteto-mode/playbooks/eval.md"
+				]
+			},
+			{
+				"action": "review",
+				"adaptation": "features.json playbook:feature",
+				"because": "Upstream changed playbook feature, which has a Copilot adaptation (adapted). Check that \"architect and arena by path; poteto-agent delegate with the feature model.\" still holds.",
+				"upstream": [
+					"skills/poteto-mode/playbooks/feature.md"
+				]
+			},
+			{
+				"action": "review",
+				"adaptation": "features.json playbook:hillclimb",
+				"because": "Upstream changed playbook hillclimb, which has a Copilot adaptation (adapted). Check that \"Worktree per hypothesis; unattended runs use Copilot's /every scheduled prompts \" still holds.",
+				"upstream": [
+					"skills/poteto-mode/playbooks/hillclimb.md"
+				]
+			},
+			{
+				"action": "review",
+				"adaptation": "features.json playbook:opening-a-pr",
+				"because": "Upstream changed playbook opening-a-pr, which has a Copilot adaptation (adapted). Check that \"gh pr create without --draft.\" still holds.",
+				"upstream": [
+					"skills/poteto-mode/playbooks/opening-a-pr.md"
+				]
+			},
+			{
+				"action": "migrated",
+				"adaptation": "features.json playbook:orchestrate",
+				"because": "New upstream playbook orchestrate. The sync adds a pending entry for review.",
+				"upstream": [
+					"skills/poteto-mode/playbooks/orchestrate.md"
+				]
+			},
+			{
+				"action": "review",
+				"adaptation": "features.json playbook:perf-issue",
+				"because": "Upstream changed playbook perf-issue, which has a Copilot adaptation (adapted). Check that \"Same control mapping.\" still holds.",
+				"upstream": [
+					"skills/poteto-mode/playbooks/perf-issue.md"
+				]
+			},
+			{
+				"action": "review",
+				"adaptation": "features.json playbook:runtime-forensics",
+				"because": "Upstream changed playbook runtime-forensics, which has a Copilot adaptation (adapted). Check that \"CDP through VS Code browser tools or node --inspect.\" still holds.",
+				"upstream": [
+					"skills/poteto-mode/playbooks/runtime-forensics.md"
+				]
+			},
+			{
+				"action": "review",
+				"adaptation": "features.json playbook:session-pickup",
+				"because": "Upstream changed playbook session-pickup, which has a Copilot adaptation (adapted). Check that \"Prior trail from ~/.copilot/session-state or a pushed branch.\" still holds.",
+				"upstream": [
+					"skills/poteto-mode/playbooks/session-pickup.md"
+				]
+			},
+			{
+				"action": "review",
+				"adaptation": "features.json playbook:shipping",
+				"because": "Upstream changed playbook shipping, which has a Copilot adaptation (partial). Check that \"Per-PR verifiers run as local background subagents in worktrees; watch-pr in a b\" still holds.",
+				"upstream": [
+					"skills/poteto-mode/playbooks/shipping.md"
+				]
+			},
+			{
+				"action": "review",
+				"adaptation": "features.json playbook:worktree-cleanup",
+				"because": "Upstream changed playbook worktree-cleanup, which has a Copilot adaptation (adapted). Check that \"Cursor cache paths map to VS Code and ~/.copilot/session-state.\" still holds.",
+				"upstream": [
+					"skills/poteto-mode/playbooks/worktree-cleanup.md"
+				]
+			},
+			{
+				"action": "migrated",
+				"adaptation": "features.json script:skills/poteto-mode/scripts/check-plan.mjs",
+				"because": "New upstream script skills/poteto-mode/scripts/check-plan.mjs. The sync adds a pending entry for review.",
+				"upstream": [
+					"skills/poteto-mode/scripts/check-plan.mjs"
+				]
+			},
+			{
+				"action": "migrated",
+				"adaptation": "features.json skill:architect",
+				"because": "Upstream changed skill architect, which a VS Code run validated. The sync marks the validation stale.",
+				"upstream": [
+					"skills/architect/SKILL.md",
+					"skills/architect/references/design-red-flags.md",
+					"skills/architect/references/rationale-template.md",
+					"skills/architect/references/runner-prompt.md"
+				]
+			},
+			{
+				"action": "migrated",
+				"adaptation": "features.json skill:arena",
+				"because": "Upstream changed skill arena, which a VS Code run validated. The sync marks the validation stale.",
+				"upstream": [
+					"skills/arena/SKILL.md"
+				]
+			},
+			{
+				"action": "review",
+				"adaptation": "features.json skill:automate-me",
+				"because": "Upstream changed skill automate-me, which has a Copilot adaptation (adapted). Check that \"ask_user, session-store mining scoped to the repo's cwd, the create-skill skill \" still holds.",
+				"upstream": [
+					"skills/automate-me/SKILL.md"
+				]
+			},
+			{
+				"action": "review",
+				"adaptation": "features.json skill:figure-it-out",
+				"because": "Upstream changed skill figure-it-out, which has a Copilot adaptation (adapted). Check that \"todolist and worktree mapping.\" still holds.",
+				"upstream": [
+					"skills/figure-it-out/SKILL.md"
+				]
+			},
+			{
+				"action": "review",
+				"adaptation": "features.json skill:how",
+				"because": "Upstream changed skill how, which has a Copilot adaptation (adapted). Check that \"One explore task (read-only) with an explicit model.\" still holds.",
+				"upstream": [
+					"skills/how/SKILL.md",
+					"skills/how/references/explainer-prompt.md",
+					"skills/how/references/explorer-prompt.md"
+				]
+			},
+			{
+				"action": "migrated",
+				"adaptation": "features.json skill:no-comments",
+				"because": "Upstream changed skill no-comments, which a VS Code run validated. The sync marks the validation stale.",
+				"upstream": [
+					"skills/no-comments/SKILL.md"
+				]
+			},
+			{
+				"action": "review",
+				"adaptation": "features.json skill:poteto-help",
+				"because": "Upstream changed skill poteto-help, which has a Copilot adaptation (adapted). Check that \"Slash skill; Cursor install, Custom Mode, and /loop answers come from the pstack\" still holds.",
+				"upstream": [
+					"skills/poteto-help/SKILL.md"
+				]
+			},
+			{
+				"action": "migrated",
+				"adaptation": "features.json skill:poteto-mode",
+				"because": "Upstream changed skill poteto-mode, which a VS Code run validated. The sync marks the validation stale.",
+				"upstream": [
+					"skills/poteto-mode/SKILL.md",
+					"skills/poteto-mode/scripts/check-plan.mjs",
+					"skills/poteto-mode/scripts/check-plan.test.ts",
+					"skills/poteto-mode/scripts/package.json",
+					"skills/poteto-mode/worker.md"
+				]
+			},
+			{
+				"action": "review",
+				"adaptation": "features.json skill:recall",
+				"because": "Upstream changed skill recall, which has a Copilot adaptation (adapted). Check that \"Mines ~/.copilot/session-state sessions whose cwd is in the repo, through sessio\" still holds.",
+				"upstream": [
+					"skills/recall/SKILL.md"
+				]
+			},
+			{
+				"action": "review",
+				"adaptation": "features.json skill:reflect",
+				"because": "Upstream changed skill reflect, which has a Copilot adaptation (adapted). Check that \"Current transcript is the session's events.jsonl; copies skills to .github/skill\" still holds.",
+				"upstream": [
+					"skills/reflect/SKILL.md",
+					"skills/reflect/references/divergent-reviewer.md",
+					"skills/reflect/references/judgment-reviewer.md",
+					"skills/reflect/references/synthesizer.md",
+					"skills/reflect/references/tooling-reviewer.md"
+				]
+			},
+			{
+				"action": "migrated",
+				"adaptation": "features.json skill:reframe",
+				"because": "Upstream skill reframe was deleted. The sync removes its entry.",
+				"upstream": [
+					"skills/reframe/SKILL.md"
+				]
+			},
+			{
+				"action": "migrated",
+				"adaptation": "skills.json reframe",
+				"because": "Upstream skill was deleted. The sync removes its argument-hint.",
+				"upstream": [
+					"skills/reframe/SKILL.md"
+				]
+			},
+			{
+				"action": "review",
+				"adaptation": "features.json skill:setup-pstack",
+				"because": "Upstream changed skill setup-pstack, which has a Copilot adaptation (adapted). Check that \"Detects models from the task tool schema, asks with ask_user, writes ~/.copilot/\" still holds.",
+				"upstream": [
+					"skills/setup-pstack/SKILL.md"
+				]
+			},
+			{
+				"action": "review",
+				"adaptation": "features.json skill:show-me-your-work",
+				"because": "Upstream changed skill show-me-your-work, which has a Copilot adaptation (adapted). Check that \"log.sh unchanged; audits rows against the session's events.jsonl; cross-vendor r\" still holds.",
+				"upstream": [
+					"skills/show-me-your-work/SKILL.md"
+				]
+			},
+			{
+				"action": "migrated",
+				"adaptation": "features.json skill:swarm",
+				"because": "Upstream changed skill swarm, which a VS Code run validated. The sync marks the validation stale.",
+				"upstream": [
+					"skills/swarm/SKILL.md"
+				]
+			},
+			{
+				"action": "review",
+				"adaptation": "features.json skill:teach",
+				"because": "Upstream changed skill teach, which has a Copilot adaptation (adapted). Check that \"Runs how and why by path; pictures become Mermaid when no image tool exists.\" still holds.",
+				"upstream": [
+					"skills/teach/SKILL.md"
+				]
+			},
+			{
+				"action": "review",
+				"adaptation": "skills/pstack-copilot/SKILL.md",
+				"because": "The Copilot adapter skill is the Copilot counterpart of upstream's Claude Code adapter. A change to a Cursor-name mapping upstream may need the same change in the Copilot tables. Changed upstream: docs/harness/claude-code.md.",
+				"upstream": [
+					"docs/harness/claude-code.md"
+				]
+			},
+			{
+				"action": "review",
+				"adaptation": "pstack-copilot/mappings/models.json",
+				"because": "Defines the role lines, defaults, and budget rules that mappings/models.json and the adapter's setup-pstack section restate. Changed upstream: skills/setup-pstack/SKILL.md.",
+				"upstream": [
+					"skills/setup-pstack/SKILL.md"
+				]
+			},
+			{
+				"action": "review",
+				"adaptation": "skills/pstack-copilot/SKILL.md",
+				"because": "Defines the role lines, defaults, and budget rules that mappings/models.json and the adapter's setup-pstack section restate. Changed upstream: skills/setup-pstack/SKILL.md.",
+				"upstream": [
+					"skills/setup-pstack/SKILL.md"
+				]
+			},
+			{
+				"action": "manual",
+				"adaptation": "pstack-copilot/mappings/models.json",
+				"because": "Holds the Subagents rules, model defaults, and routing that the poteto-mode agent, the always-applied instruction, and the model mapping depend on. Changed upstream: skills/poteto-mode/SKILL.md, skills/poteto-mode/worker.md.",
+				"upstream": [
+					"skills/poteto-mode/SKILL.md",
+					"skills/poteto-mode/worker.md"
+				]
+			},
+			{
+				"action": "manual",
+				"adaptation": "com.github.copilot/agents/poteto-mode.agent.md",
+				"because": "Holds the Subagents rules, model defaults, and routing that the poteto-mode agent, the always-applied instruction, and the model mapping depend on. Changed upstream: skills/poteto-mode/SKILL.md, skills/poteto-mode/worker.md.",
+				"upstream": [
+					"skills/poteto-mode/SKILL.md",
+					"skills/poteto-mode/worker.md"
+				]
+			},
+			{
+				"action": "manual",
+				"adaptation": "com.github.copilot/rules/pstack.instructions.md",
+				"because": "Holds the Subagents rules, model defaults, and routing that the poteto-mode agent, the always-applied instruction, and the model mapping depend on. Changed upstream: skills/poteto-mode/SKILL.md, skills/poteto-mode/worker.md.",
+				"upstream": [
+					"skills/poteto-mode/SKILL.md",
+					"skills/poteto-mode/worker.md"
+				]
+			},
+			{
+				"action": "review",
+				"adaptation": "pstack-copilot/mappings/agents.json",
+				"because": "Each upstream agent's frontmatter is mapped by an agent rule. Changed upstream: agents/comment-sicko.md, agents/poteto-agent.md.",
+				"upstream": [
+					"agents/comment-sicko.md",
+					"agents/poteto-agent.md"
+				]
+			},
+			{
+				"action": "review",
+				"adaptation": "skills/pstack-copilot/SKILL.md",
+				"because": "Playbooks name the Cursor tools, /loop, control skills, and Bugbot steps that the adapter's tables map. Changed upstream: skills/poteto-mode/playbooks/autonomous-run.md, skills/poteto-mode/playbooks/autopilot-full.md, skills/poteto-mode/playbooks/autopilot-stack.md, skills/poteto-mode/playbooks/babysit.md, skills/poteto-mode/playbooks/bug-fix.md, and 14 more.",
+				"upstream": [
+					"skills/poteto-mode/playbooks/autonomous-run.md",
+					"skills/poteto-mode/playbooks/autopilot-full.md",
+					"skills/poteto-mode/playbooks/autopilot-stack.md",
+					"skills/poteto-mode/playbooks/babysit.md",
+					"skills/poteto-mode/playbooks/bug-fix.md",
+					"skills/poteto-mode/playbooks/eval.md",
+					"skills/poteto-mode/playbooks/feature.md",
+					"skills/poteto-mode/playbooks/hillclimb.md",
+					"skills/poteto-mode/playbooks/investigation.md",
+					"skills/poteto-mode/playbooks/multi-phase-plan.md",
+					"skills/poteto-mode/playbooks/opening-a-pr.md",
+					"skills/poteto-mode/playbooks/orchestrate.md",
+					"skills/poteto-mode/playbooks/perf-issue.md",
+					"skills/poteto-mode/playbooks/refactoring.md",
+					"skills/poteto-mode/playbooks/runtime-forensics.md",
+					"skills/poteto-mode/playbooks/session-pickup.md",
+					"skills/poteto-mode/playbooks/shipping.md",
+					"skills/poteto-mode/playbooks/trace-forensics.md",
+					"skills/poteto-mode/playbooks/worktree-cleanup.md"
+				]
+			},
+			{
+				"action": "manual",
+				"adaptation": "pstack-copilot/mappings/features.json",
+				"because": "Script behavior and runtime requirements are documented in the script features and the limitations. Changed upstream: skills/poteto-mode/scripts/check-plan.mjs, skills/poteto-mode/scripts/check-plan.test.ts, skills/poteto-mode/scripts/package.json, skills/statechart/scripts/backends/mermaid.ts, skills/statechart/scripts/frontends/dot.ts, and 12 more.",
+				"upstream": [
+					"skills/poteto-mode/scripts/check-plan.mjs",
+					"skills/poteto-mode/scripts/check-plan.test.ts",
+					"skills/poteto-mode/scripts/package.json",
+					"skills/statechart/scripts/backends/mermaid.ts",
+					"skills/statechart/scripts/frontends/dot.ts",
+					"skills/statechart/scripts/janitor.ts",
+					"skills/statechart/scripts/kill.ts",
+					"skills/statechart/scripts/run.ts",
+					"skills/statechart/scripts/statechart.ts",
+					"skills/statechart/scripts/test/chart.test.ts",
+					"skills/statechart/scripts/test/cli.test.ts",
+					"skills/statechart/scripts/test/corpus.test.ts",
+					"skills/statechart/scripts/test/corpus/Login/chart.mmd",
+					"skills/statechart/scripts/test/drawn.ts",
+					"skills/statechart/scripts/test/labels.ts",
+					"skills/statechart/scripts/test/messages.test.ts",
+					"skills/statechart/scripts/test/render.test.ts"
+				]
+			},
+			{
+				"action": "manual",
+				"adaptation": "docs/limitations.md",
+				"because": "Script behavior and runtime requirements are documented in the script features and the limitations. Changed upstream: skills/poteto-mode/scripts/check-plan.mjs, skills/poteto-mode/scripts/check-plan.test.ts, skills/poteto-mode/scripts/package.json, skills/statechart/scripts/backends/mermaid.ts, skills/statechart/scripts/frontends/dot.ts, and 12 more.",
+				"upstream": [
+					"skills/poteto-mode/scripts/check-plan.mjs",
+					"skills/poteto-mode/scripts/check-plan.test.ts",
+					"skills/poteto-mode/scripts/package.json",
+					"skills/statechart/scripts/backends/mermaid.ts",
+					"skills/statechart/scripts/frontends/dot.ts",
+					"skills/statechart/scripts/janitor.ts",
+					"skills/statechart/scripts/kill.ts",
+					"skills/statechart/scripts/run.ts",
+					"skills/statechart/scripts/statechart.ts",
+					"skills/statechart/scripts/test/chart.test.ts",
+					"skills/statechart/scripts/test/cli.test.ts",
+					"skills/statechart/scripts/test/corpus.test.ts",
+					"skills/statechart/scripts/test/corpus/Login/chart.mmd",
+					"skills/statechart/scripts/test/drawn.ts",
+					"skills/statechart/scripts/test/labels.ts",
+					"skills/statechart/scripts/test/messages.test.ts",
+					"skills/statechart/scripts/test/render.test.ts"
+				]
+			},
+			{
+				"action": "automatic",
+				"adaptation": "13 relocated build paths",
+				"because": "Changed upstream files that the adapter relocates (docs, README, LICENSE). The build rewrites their links again.",
+				"upstream": [
+					"README.md",
+					"agents/comment-sicko.md",
+					"agents/poteto-agent.md",
+					"docs/guide/01-setup.md",
+					"docs/guide/02-poteto-mode.md",
+					"docs/guide/03-understand.md",
+					"docs/guide/04-design.md",
+					"docs/guide/05-build-and-clean.md",
+					"docs/guide/06-verify-and-ship.md",
+					"docs/guide/07-overnight.md",
+					"docs/guide/09-make-it-yours.md",
+					"docs/guide/10-recipes-and-pitfalls.md",
+					"docs/harness/claude-code.md"
+				]
+			}
+		],
+		"unitTerms": [
+			{
+				"unit": "skill:architect",
+				"added": [
+					"claude-",
+					"grok-",
+					"pstack-models.mdc",
+					"todolist"
+				],
+				"removed": []
+			},
+			{
+				"unit": "skill:arena",
+				"added": [
+					"grok-"
+				],
+				"removed": [
+					"generalPurpose"
+				]
+			},
+			{
+				"unit": "skill:how",
+				"added": [
+					"Run another pstack skill",
+					"claude-",
+					"grok-",
+					"inherit-parent",
+					"pstack-models.mdc"
+				],
+				"removed": []
+			},
+			{
+				"unit": "skill:poteto-mode",
+				"added": [
+					"`environment: \"cloud\"`",
+					"grok-"
+				],
+				"removed": [
+					".cursor/rules/",
+					"generalPurpose",
+					"pstack-models.mdc"
+				]
+			},
+			{
+				"unit": "skill:principle-prove-it-works",
+				"added": [
+					"Run another pstack skill"
+				],
+				"removed": []
+			},
+			{
+				"unit": "skill:principle-type-system-discipline",
+				"added": [],
+				"removed": [
+					"Run another pstack skill"
+				]
+			},
+			{
+				"unit": "skill:reflect",
+				"added": [
+					"Cursor-only features",
+					"Run another pstack skill",
+					"`Task`",
+					"`readonly: true`",
+					"agent-transcripts",
+					"claude-",
+					"create-skill",
+					"generalPurpose",
+					"gpt-",
+					"grok-",
+					"inherit-parent",
+					"pstack-models.mdc",
+					"~/.cursor/plugins/"
+				],
+				"removed": []
+			},
+			{
+				"unit": "skill:setup-pstack",
+				"added": [
+					"grok-"
+				],
+				"removed": [
+					"generalPurpose"
+				]
+			},
+			{
+				"unit": "skill:swarm",
+				"added": [
+					"grok-"
+				],
+				"removed": [
+					"claude-"
+				]
+			},
+			{
+				"unit": "skill:why",
+				"added": [
+					"Run another pstack skill",
+					"`Task`",
+					"`readonly: true`",
+					"claude-",
+					"generalPurpose",
+					"grok-",
+					"inherit-parent",
+					"pstack-models.mdc"
+				],
+				"removed": []
+			},
+			{
+				"unit": "agent:poteto-agent",
+				"added": [],
+				"removed": [
+					"claude-"
+				]
+			}
+		],
+		"termsWithoutRow": [],
+		"wrappedGained": [
+			"skill:principle-prove-it-works",
+			"skill:why"
+		],
+		"wrappedLost": [
+			"skill:principle-type-system-discipline"
+		],
+		"references": [],
+		"staleValidations": [
+			"agent:comment-sicko",
+			"agent:poteto-agent",
+			"playbook:bug-fix",
+			"skill:architect",
+			"skill:arena",
+			"skill:no-comments",
+			"skill:poteto-mode",
+			"skill:swarm"
+		]
+	},
+	"conflicts": [
+		{
+			"kind": "history-diverged",
+			"severity": "warning",
+			"message": "The locked commit ca782ed8b3c2 is not an ancestor of c742dd61706f. Upstream rewrote history, or the ref points at another line of development.",
+			"files": [],
+			"override": "--allow-rewrite"
+		},
+		{
+			"kind": "version-downgrade",
+			"severity": "warning",
+			"message": "Upstream version went from 0.15.48 to 0.15.36.",
+			"files": [],
+			"override": "--allow-downgrade"
+		}
+	],
+	"migration": {
+		"ops": [
+			"features.json: marked agent:comment-sicko stale (upstream agent changed)",
+			"features.json: marked agent:poteto-agent stale (upstream agent changed)",
+			"features.json: marked playbook:bug-fix stale (upstream playbook changed)",
+			"features.json: added playbook:orchestrate as pending (new upstream playbook)",
+			"features.json: added script:skills/poteto-mode/scripts/check-plan.mjs as pending (new upstream script)",
+			"features.json: marked skill:architect stale (upstream skill changed)",
+			"features.json: marked skill:arena stale (upstream skill changed)",
+			"features.json: marked skill:no-comments stale (upstream skill changed)",
+			"features.json: marked skill:poteto-mode stale (upstream skill changed)",
+			"features.json: removed skill:reframe (upstream skill deleted)",
+			"skills.json: removed the argument-hint for reframe",
+			"features.json: marked skill:swarm stale (upstream skill changed)",
+			"adapter.json: coreVersions is now 0.15.36, revision 4 -> 5"
+		],
+		"kept": []
+	},
+	"validation": [
+		{
+			"name": "core matches UPSTREAM.lock.json",
+			"passed": true,
+			"problems": []
+		},
+		{
+			"name": "build is core + declared transforms",
+			"passed": true,
+			"problems": []
+		},
+		{
+			"name": "build is deterministic",
+			"passed": true,
+			"problems": []
+		},
+		{
+			"name": "adapter maps every Cursor term in use",
+			"passed": true,
+			"problems": []
+		},
+		{
+			"name": "every upstream feature is traced",
+			"passed": true,
+			"problems": []
+		},
+		{
+			"name": "skills, agents, instructions follow Copilot schemas",
+			"passed": true,
+			"problems": []
+		},
+		{
+			"name": "relative links resolve inside the build",
+			"passed": true,
+			"problems": []
+		},
+		{
+			"name": "model defaults agree with the adapter skill",
+			"passed": true,
+			"problems": []
+		}
+	],
+	"failedChecks": []
+}

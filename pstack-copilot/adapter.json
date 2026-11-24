@@ -1,9 +1,9 @@
 {
 	"id": "copilot",
 	"displayName": "GitHub Copilot (Copilot harness in VS Code, GitHub Copilot app, Copilot CLI)",
-	"revision": 4,
+	"revision": 5,
 	"coreVersions": [
-		"0.15.48"
+		"0.15.36"
 	],
 	"plugin": {
 		"name": "pstack",

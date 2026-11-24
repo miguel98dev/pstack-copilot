@@ -39,6 +39,65 @@
 			},
 			"report": null,
 			"note": "Recorded from the existing lock. This state was vendored before the synchronization history existed."
+		},
+		{
+			"id": "sync-c742dd61706f",
+			"kind": "sync",
+			"at": "2026-11-24T17:10:43.571Z",
+			"trigger": "test",
+			"status": "prepared",
+			"from": {
+				"commit": "ca782ed8b3c2c521cead8e1720d55c3a5dbf2347",
+				"version": "0.15.48",
+				"tree": "971573532de6714a4ddff8ec39b52d021ebf161a"
+			},
+			"to": {
+				"commit": "c742dd61706fbacc1b95f1a20b7b988cf096ce6c",
+				"version": "0.15.36",
+				"tree": "4719e1c4b4c43bac85d4206a8b41dd2899769c1c"
+			},
+			"counts": {
+				"added": 24,
+				"modified": 84,
+				"deleted": 5,
+				"renamed": 0,
+				"mode-changed": 0
+			},
+			"adapter": {
+				"revisionBefore": 4,
+				"revisionAfter": 5,
+				"coreVersionsAfter": [
+					"0.15.36"
+				]
+			},
+			"impact": {
+				"affected": 50,
+				"needsManual": 5
+			},
+			"conflicts": [
+				"history-diverged",
+				"version-downgrade"
+			],
+			"migration": [
+				"features.json: marked agent:comment-sicko stale (upstream agent changed)",
+				"features.json: marked agent:poteto-agent stale (upstream agent changed)",
+				"features.json: marked playbook:bug-fix stale (upstream playbook changed)",
+				"features.json: added playbook:orchestrate as pending (new upstream playbook)",
+				"features.json: added script:skills/poteto-mode/scripts/check-plan.mjs as pending (new upstream script)",
+				"features.json: marked skill:architect stale (upstream skill changed)",
+				"features.json: marked skill:arena stale (upstream skill changed)",
+				"features.json: marked skill:no-comments stale (upstream skill changed)",
+				"features.json: marked skill:poteto-mode stale (upstream skill changed)",
+				"features.json: removed skill:reframe (upstream skill deleted)",
+				"skills.json: removed the argument-hint for reframe",
+				"features.json: marked skill:swarm stale (upstream skill changed)",
+				"adapter.json: coreVersions is now 0.15.36, revision 4 -> 5"
+			],
+			"validation": {
+				"passed": true,
+				"failed": []
+			},
+			"report": "docs/sync/reports/2026-11-24-0.15.36-c742dd61706f.md"
 		}
 	]
 }

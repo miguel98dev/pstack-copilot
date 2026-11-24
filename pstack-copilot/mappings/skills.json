@@ -1,33 +1,86 @@
 {
 	"note": "Frontmatter keys added to upstream skills for Copilot's slash-command input. Only Copilot-only keys are allowed, and only added, never changed.",
-	"allowedKeys": ["argument-hint"],
+	"allowedKeys": [
+		"argument-hint"
+	],
 	"skills": {
-		"architect": { "argument-hint": "<what to design before writing code>" },
-		"arena": { "argument-hint": "<task every candidate gets, verbatim>" },
-		"automate-me": { "argument-hint": "[update or start fresh]" },
-		"benchmark-checklist": { "argument-hint": "<the number and how it was measured>" },
-		"blast-radius": { "argument-hint": "<change, PR, or diff to assess>" },
-		"create-formal-verification-skill": { "argument-hint": "[area, invariant, or bug to verify]" },
-		"create-verification-skill": { "argument-hint": "[app or surface to drive]" },
-		"figure-it-out": { "argument-hint": "<large task and how you will judge it>" },
-		"how": { "argument-hint": "<how does X work, or where should Y live>" },
-		"interrogate": { "argument-hint": "[PR, branch, files, or design; default is the branch diff]" },
-		"maintain-formal-verification-skill": { "argument-hint": "[verification skill to bring in line]" },
-		"maintain-verification-skill": { "argument-hint": "[verification skill to bring in line]" },
-		"no-comments": { "argument-hint": "[files or diff; default is the branch diff]" },
-		"poteto-help": { "argument-hint": "<question about pstack>" },
-		"poteto-mode": { "argument-hint": "<goal, and how to tell it is done>" },
-		"recall": { "argument-hint": "<topic> [window, default the last 7 days]" },
-		"reframe": { "argument-hint": "<what you are building, in your own words>" },
-		"setup-pstack": { "argument-hint": "[large, medium, or small budget]" },
-		"sharpen": { "argument-hint": "<prompt to make deeper>" },
-		"show-me-your-work": { "argument-hint": "[log path]" },
-		"statechart": { "argument-hint": "<flow, protocol, or service to model>" },
-		"swarm": { "argument-hint": "<done predicate, and the slices or race>" },
-		"tdd": { "argument-hint": "<bug to fix test-first>" },
-		"teach": { "argument-hint": "<change or subsystem to understand>" },
-		"technical-writing": { "argument-hint": "<doc, PR description, or commit message to write>" },
-		"unslop": { "argument-hint": "<text or files to clean up>" },
-		"why": { "argument-hint": "<code, decision, or number whose history you want>" }
+		"architect": {
+			"argument-hint": "<what to design before writing code>"
+		},
+		"arena": {
+			"argument-hint": "<task every candidate gets, verbatim>"
+		},
+		"automate-me": {
+			"argument-hint": "[update or start fresh]"
+		},
+		"benchmark-checklist": {
+			"argument-hint": "<the number and how it was measured>"
+		},
+		"blast-radius": {
+			"argument-hint": "<change, PR, or diff to assess>"
+		},
+		"create-formal-verification-skill": {
+			"argument-hint": "[area, invariant, or bug to verify]"
+		},
+		"create-verification-skill": {
+			"argument-hint": "[app or surface to drive]"
+		},
+		"figure-it-out": {
+			"argument-hint": "<large task and how you will judge it>"
+		},
+		"how": {
+			"argument-hint": "<how does X work, or where should Y live>"
+		},
+		"interrogate": {
+			"argument-hint": "[PR, branch, files, or design; default is the branch diff]"
+		},
+		"maintain-formal-verification-skill": {
+			"argument-hint": "[verification skill to bring in line]"
+		},
+		"maintain-verification-skill": {
+			"argument-hint": "[verification skill to bring in line]"
+		},
+		"no-comments": {
+			"argument-hint": "[files or diff; default is the branch diff]"
+		},
+		"poteto-help": {
+			"argument-hint": "<question about pstack>"
+		},
+		"poteto-mode": {
+			"argument-hint": "<goal, and how to tell it is done>"
+		},
+		"recall": {
+			"argument-hint": "<topic> [window, default the last 7 days]"
+		},
+		"setup-pstack": {
+			"argument-hint": "[large, medium, or small budget]"
+		},
+		"sharpen": {
+			"argument-hint": "<prompt to make deeper>"
+		},
+		"show-me-your-work": {
+			"argument-hint": "[log path]"
+		},
+		"statechart": {
+			"argument-hint": "<flow, protocol, or service to model>"
+		},
+		"swarm": {
+			"argument-hint": "<done predicate, and the slices or race>"
+		},
+		"tdd": {
+			"argument-hint": "<bug to fix test-first>"
+		},
+		"teach": {
+			"argument-hint": "<change or subsystem to understand>"
+		},
+		"technical-writing": {
+			"argument-hint": "<doc, PR description, or commit message to write>"
+		},
+		"unslop": {
+			"argument-hint": "<text or files to clean up>"
+		},
+		"why": {
+			"argument-hint": "<code, decision, or number whose history you want>"
+		}
 	}
 }

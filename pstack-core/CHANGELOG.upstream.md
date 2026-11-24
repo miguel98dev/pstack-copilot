@@ -2,6 +2,22 @@
 
 Written by `pstack upstream sync`, newest first. Each entry lists what changed in `cursor/plugins/pstack` between two locked commits.
 
+## 0.15.36 (`c742dd61706f`), synced 2026-11-24
+
+From 0.15.48 (`ca782ed8b3c2`). 24 added, 84 modified, 5 deleted, 0 renamed, 0 mode changes.
+
+### Skills
+
+- `reframe` removed
+
+### Playbooks
+
+- `orchestrate` added
+
+### Scripts
+
+- `skills/poteto-mode/scripts/check-plan.mjs` added
+
 ## 0.15.48 (`ca782ed8b3c2`), synced 2026-11-24
 
 From nothing.
