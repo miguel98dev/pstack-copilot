@@ -1,0 +1,16 @@
+{
+	"name": "pstack-monorepo",
+	"private": true,
+	"type": "module",
+	"description": "pstack-core (exact upstream pstack), pstack-copilot (GitHub Copilot adaptation), and pstack-manager (sync, build, validate, install).",
+	"license": "MIT",
+	"engines": {
+		"node": ">=22.18"
+	},
+	"scripts": {
+		"pstack": "./pstack-manager/bin/pstack",
+		"test": "node --disable-warning=ExperimentalWarning --test \"tests/**/*.test.ts\"",
+		"verify": "./pstack-manager/bin/pstack core verify && ./pstack-manager/bin/pstack build && ./pstack-manager/bin/pstack validate",
+		"check": "npm run verify && npm test"
+	}
+}

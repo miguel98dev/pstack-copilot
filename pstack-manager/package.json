@@ -1,0 +1,14 @@
+{
+	"name": "@pstack/manager",
+	"version": "0.1.0",
+	"private": true,
+	"type": "module",
+	"description": "Syncs upstream pstack, builds platform adaptations, proves them, and installs them for GitHub Copilot.",
+	"license": "MIT",
+	"bin": {
+		"pstack": "./bin/pstack"
+	},
+	"engines": {
+		"node": ">=22.18"
+	}
+}
